@@ -1,50 +1,197 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  /* YEAR */
-
-  const year = document.getElementById("year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
+/* =====================================================
+   LDF MAIN JAVASCRIPT
+===================================================== */
 
 
-  /* MOBILE MENU */
+/* -----------------------------------------------------
+   HEADER SCROLL EFFECT
+----------------------------------------------------- */
 
-  const menuButton = document.querySelector(".menu-toggle");
-  const navigation = document.querySelector(".main-nav");
+const header = document.getElementById("siteHeader");
 
-  if (menuButton && navigation) {
+window.addEventListener("scroll", () => {
 
-    menuButton.addEventListener("click", function () {
+    if (window.scrollY > 40) {
 
-      navigation.classList.toggle("open");
+        header.classList.add("scrolled");
 
-      const opened = navigation.classList.contains("open");
+    } else {
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        opened ? "true" : "false"
-      );
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* -----------------------------------------------------
+   MOBILE MENU
+----------------------------------------------------- */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+menuToggle.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("active");
+
+});
+
+
+/* -----------------------------------------------------
+   CLOSE MOBILE MENU AFTER CLICK
+----------------------------------------------------- */
+
+document.querySelectorAll(
+    ".mobile-menu a"
+).forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("active");
 
     });
 
-  }
+});
 
 
-  /* CLOSE MOBILE MENU AFTER CLICK */
+/* -----------------------------------------------------
+   CURRENT YEAR
+----------------------------------------------------- */
 
-  document.querySelectorAll(".main-nav a").forEach(function (link) {
+const year =
+    document.getElementById("year");
 
-    link.addEventListener("click", function () {
+if (year) {
 
-      if (navigation) {
-        navigation.classList.remove("open");
-      }
+    year.textContent =
+        new Date().getFullYear();
 
-    });
+}
 
-  });
+
+/* -----------------------------------------------------
+   IMPACT COUNTERS
+----------------------------------------------------- */
+
+const counters =
+    document.querySelectorAll("[data-count]");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                const counter =
+                    entry.target;
+
+                const target =
+                    Number(
+                        counter.dataset.count
+                    );
+
+                let current = 0;
+
+                const increment =
+                    Math.max(
+                        1,
+                        Math.ceil(target / 60)
+                    );
+
+                const updateCounter =
+                    () => {
+
+                        current += increment;
+
+                        if (current >= target) {
+
+                            counter.textContent =
+                                target + "+";
+
+                            return;
+
+                        }
+
+                        counter.textContent =
+                            current;
+
+                        requestAnimationFrame(
+                            updateCounter
+                        );
+
+                    };
+
+                updateCounter();
+
+                observer.unobserve(counter);
+
+            });
+
+        },
+        {
+            threshold: .5
+        }
+    );
+
+
+counters.forEach(counter => {
+
+    observer.observe(counter);
+
+});
+
+
+/* -----------------------------------------------------
+   SIMPLE REVEAL ANIMATION
+----------------------------------------------------- */
+
+const revealItems =
+    document.querySelectorAll(
+        ".focus-card, .purpose-card, .involved-card, .process-step"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+revealItems.forEach(item => {
+
+    item.classList.add("reveal");
+
+    revealObserver.observe(item);
 
 });
