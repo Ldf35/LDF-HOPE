@@ -1,613 +1,1470 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Life Development Foundation | LDF</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Life Development Foundation — creating positive and thriving communities through knowledge, opportunity, human connection and responsible action.">
-  <meta name="theme-color" content="#002b7f">
+  <meta
+    name="theme-color"
+    content="#002B7F">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="LDF HOPE — Hope for Families. A transparent community support platform by Life Development Foundation.">
 
+  <title>LDF HOPE | Hope for Families</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/LDF-HOPE/css/style.css">
-</bc bc head>
+
+  <style>
+
+    :root {
+
+      --blue: #002B7F;
+      --blue-light: #0055D4;
+      --blue-dark: #001B52;
+      --deep: #001338;
+
+      --white: #fff;
+      --soft: #F5F8FD;
+
+      --text: #10213B;
+      --muted: #66748B;
+
+      --border: #E5EAF2;
+
+      --shadow:
+        0 25px 70px rgba(0,30,80,.12);
+
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        var(--soft);
+
+      line-height: 1.7;
+
+      overflow-x: hidden;
+
+    }
+
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    .container {
+
+      width:
+        min(
+          calc(100% - 40px),
+          1150px
+        );
+
+      margin:
+        0 auto;
+
+    }
+
+
+    /* HEADER */
+
+    .header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(255,255,255,.95);
+
+      backdrop-filter:
+        blur(20px);
+
+      border-bottom:
+        1px solid var(--border);
+
+    }
+
+
+    .nav {
+
+      min-height: 75px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+    }
+
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+    }
+
+
+    .brand-mark {
+
+      width: 43px;
+      height: 43px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 12px;
+
+      background:
+        var(--blue);
+
+      color: white;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        -.07em;
+
+    }
+
+
+    .brand-name {
+
+      display: flex;
+
+      flex-direction: column;
+
+      line-height: 1.15;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+    }
+
+
+    .brand-name strong {
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+    }
+
+
+    .brand-name span {
+
+      font-size: 10px;
+
+      color: var(--muted);
+
+    }
+
+
+    .back-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding:
+        10px 16px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        100px;
+
+      color:
+        var(--blue);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      transition: .3s ease;
+
+    }
+
+
+    .back-link:hover {
+
+      background:
+        var(--blue);
+
+      border-color:
+        var(--blue);
+
+      color: white;
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height:
+        650px;
+
+      display: flex;
+
+      align-items: center;
+
+      color: white;
+
+      background:
+        var(--deep);
+
+    }
+
+
+    .hero-bg {
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          100deg,
+          rgba(0,19,56,.96),
+          rgba(0,43,127,.76)
+        ),
+        url("assets/hope.jpg");
+
+      background-size:
+        cover;
+
+      background-position:
+        center;
+
+      animation:
+        zoom 18s ease-in-out
+        infinite alternate;
+
+    }
+
+
+    @keyframes zoom {
+
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.08);
+      }
+
+    }
+
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width:
+        800px;
+
+      padding:
+        100px 0;
+
+    }
+
+
+    .eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color:
+        rgba(255,255,255,.65);
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        .2em;
+
+    }
+
+
+    .eyebrow::before {
+
+      content: "";
+
+      width: 25px;
+
+      height: 2px;
+
+      background: white;
+
+    }
+
+
+    .hero h1 {
+
+      margin-top:
+        25px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(
+          4rem,
+          10vw,
+          8rem
+        );
+
+      line-height: .8;
+
+      letter-spacing:
+        -.1em;
+
+      font-weight: 800;
+
+    }
+
+
+    .hero h1 span {
+
+      display: block;
+
+      color:
+        rgba(255,255,255,.58);
+
+    }
+
+
+    .hero h2 {
+
+      margin-top:
+        35px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(
+          2rem,
+          5vw,
+          3.8rem
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.06em;
+
+    }
+
+
+    .hero p {
+
+      max-width:
+        650px;
+
+      margin-top:
+        25px;
+
+      color:
+        rgba(255,255,255,.7);
+
+      font-size:
+        15px;
+
+    }
+
+
+    .hero-buttons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top:
+        35px;
+
+    }
+
+
+    .btn {
+
+      min-height:
+        52px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      padding:
+        0 22px;
+
+      border-radius:
+        100px;
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      transition:
+        .3s ease;
+
+    }
+
+
+    .btn:hover {
+
+      transform:
+        translateY(-3px);
+
+    }
+
+
+    .btn-white {
+
+      background:
+        white;
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .btn-outline {
+
+      color: white;
+
+      border:
+        1px solid
+        rgba(255,255,255,.4);
+
+      background:
+        rgba(255,255,255,.05);
+
+    }
+
+
+    /* FEATURES */
+
+    .features {
+
+      padding:
+        100px 0;
+
+      background:
+        white;
+
+    }
+
+
+    .section-heading {
+
+      max-width:
+        720px;
+
+    }
+
+
+    .label {
+
+      color:
+        var(--blue);
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .2em;
+
+    }
+
+
+    .section-heading h2 {
+
+      margin-top:
+        15px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.5rem,
+          5vw,
+          4.5rem
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.06em;
+
+    }
+
+
+    .section-heading h2 span {
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .section-heading p {
+
+      margin-top:
+        20px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        15px;
+
+    }
+
+
+    .feature-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:
+        18px;
+
+      margin-top:
+        55px;
+
+    }
+
+
+    .feature {
+
+      padding:
+        30px;
+
+      background:
+        var(--soft);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        20px;
+
+      transition:
+        .3s ease;
+
+    }
+
+
+    .feature:hover {
+
+      transform:
+        translateY(-7px);
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .feature-number {
+
+      color:
+        var(--blue);
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .feature h3 {
+
+      margin-top:
+        20px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        20px;
+
+      letter-spacing:
+        -.04em;
+
+    }
+
+
+    .feature p {
+
+      margin-top:
+        8px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+    }
+
+
+    /* APP */
+
+    .app-section {
+
+      padding:
+        100px 0;
+
+      background:
+        var(--soft);
+
+    }
+
+
+    .app-card {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      align-items:
+        center;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        30px;
+
+      background:
+        var(--blue);
+
+      color:
+        white;
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .app-content {
+
+      padding:
+        65px;
+
+    }
+
+
+    .app-content h2 {
+
+      margin-top:
+        15px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.5rem,
+          5vw,
+          4rem
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.06em;
+
+    }
+
+
+    .app-content p {
+
+      margin-top:
+        20px;
+
+      color:
+        rgba(255,255,255,.65);
+
+      font-size:
+        14px;
+
+    }
+
+
+    .app-list {
+
+      display:
+        grid;
+
+      gap:
+        10px;
+
+      margin-top:
+        25px;
+
+    }
+
+
+    .app-list div {
+
+      display:
+        flex;
+
+      gap:
+        10px;
+
+      color:
+        rgba(255,255,255,.8);
+
+      font-size:
+        12px;
+
+    }
+
+
+    .app-list span {
+
+      color:
+        white;
+
+    }
+
+
+    .app-image {
+
+      min-height:
+        500px;
+
+      background:
+        linear-gradient(
+          rgba(0,43,127,.15),
+          rgba(0,19,56,.4)
+        ),
+        url("assets/hope.jpg");
+
+      background-size:
+        cover;
+
+      background-position:
+        center;
+
+    }
+
+
+    /* CTA */
+
+    .final {
+
+      padding:
+        100px 0;
+
+      text-align:
+        center;
+
+      background:
+        white;
+
+    }
+
+
+    .final h2 {
+
+      max-width:
+        800px;
+
+      margin:
+        0 auto;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.5rem,
+          6vw,
+          5rem
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.07em;
+
+    }
+
+
+    .final h2 span {
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .final p {
+
+      max-width:
+        600px;
+
+      margin:
+        20px auto 0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
+
+    }
+
+
+    .final .btn {
+
+      margin-top:
+        30px;
+
+      background:
+        var(--blue);
+
+      color:
+        white;
+
+    }
+
+
+    /* FOOTER */
+
+    footer {
+
+      padding:
+        35px 0;
+
+      background:
+        var(--deep);
+
+      color:
+        white;
+
+    }
+
+
+    .footer-inner {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+    }
+
+
+    footer p {
+
+      color:
+        rgba(255,255,255,.45);
+
+      font-size:
+        11px;
+
+    }
+
+
+    .footer-home {
+
+      color:
+        rgba(255,255,255,.65);
+
+      font-size:
+        11px;
+
+      font-weight:
+        700;
+
+    }
+
+
+    @media(max-width:900px) {
+
+      .feature-grid {
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+      }
+
+      .app-card {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .app-image {
+
+        min-height:
+          350px;
+
+        order:
+          -1;
+
+      }
+
+    }
+
+
+    @media(max-width:600px) {
+
+      .container {
+
+        width:
+          calc(100% - 30px);
+
+      }
+
+      .hero {
+
+        min-height:
+          620px;
+
+      }
+
+      .hero-content {
+
+        padding:
+          80px 0;
+
+      }
+
+      .feature-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .app-content {
+
+        padding:
+          40px 25px;
+
+      }
+
+      .hero-buttons {
+
+        flex-direction:
+          column;
+
+      }
+
+      .hero-buttons .btn {
+
+        width:
+          100%;
+
+      }
+
+      .footer-inner {
+
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
 
 <body>
 
-<header class="header" id="header">
 
-  <a href="index.html" class="logo">
-    <div class="logo-mark">LDF</div>
-    <div>
-      <strong>Life Development</strong>
-      <span>Foundation</span>
-    </div>
-  </a>
+  <!-- HEADER -->
 
-  <nav class="nav" id="nav">
-    <a href="index.html">Home</a>
-    <a href="#about">About</a>
-    <a href="hope.html">LDF HOPE</a>
-    <a href="#focus">Our Focus</a>
-    <a href="#impact">Impact</a>
-    <a href="#involved">Get Involved</a>
-  </nav>
+  <header class="header">
 
-  <a class="header-button" href="hope.html">
-    HOPE Project
-    <span>↗</span>
-  </a>
+    <div class="container nav">
 
-  <button class="menu-button" id="menuButton" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+      <a href="index.html" class="brand">
 
-</header>
-
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="hero-background"></div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      <span></span>
-      LIFE DEVELOPMENT FOUNDATION
-    </div>
-
-    <h1>
-      Building better lives.<br>
-      <em>Creating stronger communities.</em>
-    </h1>
-
-    <p>
-      We believe meaningful social change begins when people have
-      knowledge, opportunity, support and the confidence to build
-      a better future.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="hope.html" class="button primary">
-        Explore LDF HOPE
-        <span>→</span>
-      </a>
-
-      <a href="#about" class="button secondary">
-        Discover LDF
-      </a>
-    </div>
-
-    <div class="hero-trust">
-      <div>
-        <strong>01</strong>
-        <span>People first</span>
-      </div>
-
-      <div>
-        <strong>02</strong>
-        <span>Dignity always</span>
-      </div>
-
-      <div>
-        <strong>03</strong>
-        <span>Impact that lasts</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="hero-scroll">
-    <span>SCROLL TO EXPLORE</span>
-    <div></div>
-  </div>
-
-</section>
-
-
-<!-- INTRO -->
-
-<section class="intro section">
-
-  <div class="section-label">
-    <span>01</span>
-    WHO WE ARE
-  </div>
-
-  <div class="intro-grid">
-
-    <div>
-      <h2>
-        Positive change starts
-        <span>with people.</span>
-      </h2>
-    </div>
-
-    <div>
-      <p class="large-text">
-        Life Development Foundation is built around a simple idea:
-        when people are supported with knowledge, opportunity and
-        human connection, communities become stronger.
-      </p>
-
-      <p>
-        Our work brings together education, family empowerment,
-        personal development and practical support to help people
-        move forward with confidence and dignity.
-      </p>
-
-      <a href="#about" class="text-link">
-        Learn about LDF →
-      </a>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="about section" id="about">
-
-  <div class="about-image">
-    <div class="image-overlay"></div>
-
-    <div class="image-card">
-      <span>EST.</span>
-      <strong>2019</strong>
-      <small>Life Development Foundation</small>
-    </div>
-  </div>
-
-  <div class="about-content">
-
-    <div class="section-label">
-      <span>02</span>
-      OUR PURPOSE
-    </div>
-
-    <h2>
-      Creating a positive
-      and thriving community.
-    </h2>
-
-    <p>
-      Our vision is to nurture spirituality and good attitudes
-      alongside knowledge and skills, helping individuals become
-      responsible citizens who contribute positively to society.
-    </p>
-
-    <p>
-      We create practical opportunities for learning, support and
-      personal development — focusing on what can make a genuine
-      difference in everyday life.
-    </p>
-
-    <div class="about-points">
-
-      <div>
-        <span>01</span>
-        <strong>Knowledge</strong>
-        <p>Helping people access useful knowledge and learning.</p>
-      </div>
-
-      <div>
-        <span>02</span>
-        <strong>Opportunity</strong>
-        <p>Creating pathways toward stronger futures.</p>
-      </div>
-
-      <div>
-        <span>03</span>
-        <strong>Responsibility</strong>
-        <p>Encouraging people to contribute to their communities.</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- HOPE -->
-
-<section class="hope-section section" id="hope">
-
-  <div class="hope-content">
-
-    <div class="section-label light">
-      <span>03</span>
-      OUR FIRST MAJOR PROJECT
-    </div>
-
-    <div class="hope-title">
-      <div class="hope-logo">HOPE</div>
-
-      <h2>
-        Support a family.<br>
-        <em>Strengthen a future.</em>
-      </h2>
-    </div>
-
-    <p>
-      LDF HOPE is designed to support families with dignity through
-      practical grocery assistance, community involvement and a
-      transparent system that connects donors, shops and volunteers.
-    </p>
-
-    <div class="hope-features">
-
-      <div>
-        <strong>01</strong>
-        <span>Family support</span>
-      </div>
-
-      <div>
-        <strong>02</strong>
-        <span>Community action</span>
-      </div>
-
-      <div>
-        <strong>03</strong>
-        <span>Transparent delivery</span>
-      </div>
-
-    </div>
-
-    <a href="hope.html" class="button white">
-      Explore LDF HOPE →
-    </a>
-
-  </div>
-
-  <div class="hope-visual">
-
-    <div class="hope-circle">
-      <div>
-        <span>HOPE</span>
-        <small>FOR FAMILIES</small>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FOCUS -->
-
-<section class="focus section" id="focus">
-
-  <div class="section-heading">
-
-    <div class="section-label">
-      <span>04</span>
-      OUR FOCUS
-    </div>
-
-    <h2>
-      Areas where we
-      <span>create change.</span>
-    </h2>
-
-  </div>
-
-  <div class="focus-grid">
-
-    <article class="focus-card">
-      <div class="card-number">01</div>
-      <div class="card-icon">⌂</div>
-      <h3>Child Protection</h3>
-      <p>
-        Supporting safer environments, awareness and positive
-        development for children.
-      </p>
-      <a href="#">Explore →</a>
-    </article>
-
-    <article class="focus-card">
-      <div class="card-number">02</div>
-      <div class="card-icon">♡</div>
-      <h3>Family Empowerment</h3>
-      <p>
-        Helping families access practical support and build
-        stronger futures together.
-      </p>
-      <a href="hope.html">Explore →</a>
-    </article>
-
-    <article class="focus-card">
-      <div class="card-number">03</div>
-      <div class="card-icon">↗</div>
-      <h3>Career Development</h3>
-      <p>
-        Encouraging skills, confidence and opportunities for
-        meaningful careers.
-      </p>
-      <a href="#">Explore →</a>
-    </article>
-
-    <article class="focus-card">
-      <div class="card-number">04</div>
-      <div class="card-icon">◎</div>
-      <h3>Academic Success</h3>
-      <p>
-        Creating learning opportunities that help young people
-        reach their potential.
-      </p>
-      <a href="#">Explore →</a>
-    </article>
-
-    <article class="focus-card">
-      <div class="card-number">05</div>
-      <div class="card-icon">✦</div>
-      <h3>Mental Wellbeing</h3>
-      <p>
-        Promoting emotional wellbeing, resilience and healthy
-        approaches to life's challenges.
-      </p>
-      <a href="#">Explore →</a>
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- IMPACT -->
-
-<section class="impact section" id="impact">
-
-  <div class="impact-header">
-
-    <div class="section-label light">
-      <span>05</span>
-      OUR IMPACT
-    </div>
-
-    <h2>
-      Small actions can create
-      <em>lasting change.</em>
-    </h2>
-
-    <p>
-      LDF is growing step by step — building systems that make
-      social support more transparent, organised and sustainable.
-    </p>
-
-  </div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <strong data-count="2019">0</strong>
-      <span>Foundation journey began</span>
-    </div>
-
-    <div class="stat">
-      <strong data-count="5">0</strong>
-      <span>Core focus areas</span>
-    </div>
-
-    <div class="stat">
-      <strong>∞</strong>
-      <span>Potential to create change</span>
-    </div>
-
-    <div class="stat">
-      <strong>01</strong>
-      <span>HOPE ecosystem</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- INVOLVED -->
-
-<section class="involved section" id="involved">
-
-  <div class="section-heading">
-
-    <div class="section-label">
-      <span>06</span>
-      GET INVOLVED
-    </div>
-
-    <h2>
-      You don't need to
-      <span>do everything.</span>
-    </h2>
-
-    <p>
-      You can contribute your time, skills, resources, business
-      or simply help someone discover what we are building.
-    </p>
-
-  </div>
-
-  <div class="involved-grid">
-
-    <a href="hope.html" class="involve-card">
-
-      <span class="involve-number">01</span>
-
-      <div>
-        <h3>Support HOPE</h3>
-        <p>Help provide practical support to families.</p>
-      </div>
-
-      <span class="arrow">↗</span>
-
-    </a>
-
-    <a href="#" class="involve-card">
-
-      <span class="involve-number">02</span>
-
-      <div>
-        <h3>Volunteer</h3>
-        <p>Use your time and skills to create community impact.</p>
-      </div>
-
-      <span class="arrow">↗</span>
-
-    </a>
-
-    <a href="#" class="involve-card">
-
-      <span class="involve-number">03</span>
-
-      <div>
-        <h3>Become a Partner</h3>
-        <p>Businesses and organisations can work with LDF.</p>
-      </div>
-
-      <span class="arrow">↗</span>
-
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="final-cta">
-
-  <div>
-
-    <span class="cta-small">LIFE DEVELOPMENT FOUNDATION</span>
-
-    <h2>
-      Let's build something
-      <em>worth believing in.</em>
-    </h2>
-
-    <p>
-      A stronger community begins with people who choose to care.
-    </p>
-
-    <div class="hero-buttons">
-
-      <a href="hope.html" class="button primary">
-        Visit LDF HOPE →
-      </a>
-
-      <a href="mailto:lifedevelopmentfoundation.uk@gmail.com"
-         class="button secondary">
-        Contact LDF
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div class="footer-main">
-
-    <div class="footer-brand">
-
-      <a href="index.html" class="logo footer-logo">
-        <div class="logo-mark">LDF</div>
-        <div>
-          <strong>Life Development</strong>
-          <span>Foundation</span>
+        <div class="brand-mark">
+          LDF
         </div>
+
+        <div class="brand-name">
+
+          <strong>
+            Life Development
+          </strong>
+
+          <span>
+            Foundation
+          </span>
+
+        </div>
+
       </a>
 
-      <p>
-        Creating positive and thriving communities through
-        knowledge, opportunity and responsible action.
-      </p>
 
-      <div class="socials">
+      <a
+        href="index.html"
+        class="back-link">
 
-        <a href="#" aria-label="Facebook">f</a>
-        <a href="#" aria-label="Instagram">◎</a>
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="YouTube">▶</a>
+        ← Back to LDF
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-bg"></div>
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          LIFE DEVELOPMENT FOUNDATION
+        </div>
+
+        <h1>
+          HOPE
+          <span>for Families.</span>
+        </h1>
+
+        <h2>
+          Support a family.
+          Strengthen a future.
+        </h2>
+
+        <p>
+          LDF HOPE is a community-focused platform designed
+          to connect families, donors, volunteers, shops and
+          partners through a transparent and organised support
+          system.
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-white">
+
+            Open HOPE App
+            ↗
+
+          </a>
+
+
+          <a
+            href="#how"
+            class="btn btn-outline">
+
+            How HOPE works
+            ↓
+
+          </a>
+
+        </div>
 
       </div>
 
     </div>
 
-    <div class="footer-column">
+  </section>
 
-      <h4>Explore</h4>
 
-      <a href="index.html">Home</a>
-      <a href="#about">About LDF</a>
-      <a href="hope.html">LDF HOPE</a>
-      <a href="#focus">Our Focus</a>
-      <a href="#impact">Our Impact</a>
+  <!-- PURPOSE -->
+
+  <section class="features" id="how">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="label">
+          THE IDEA
+        </div>
+
+        <h2>
+          More than a donation.
+          <span>A system for dignity.</span>
+        </h2>
+
+        <p>
+          HOPE is being developed to make community support
+          more organised, transparent and meaningful.
+          The focus is on helping families while building
+          a wider ecosystem of people and organisations
+          working together.
+        </p>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+
+        <article class="feature">
+
+          <div class="feature-number">
+            01
+          </div>
+
+          <h3>
+            Families
+          </h3>
+
+          <p>
+            Identify and support families through an organised
+            and respectful process.
+          </p>
+
+        </article>
+
+
+        <article class="feature">
+
+          <div class="feature-number">
+            02
+          </div>
+
+          <h3>
+            Donors
+          </h3>
+
+          <p>
+            Allow supporters to contribute towards specific
+            support packages and cycles.
+          </p>
+
+        </article>
+
+
+        <article class="feature">
+
+          <div class="feature-number">
+            03
+          </div>
+
+          <h3>
+            Volunteers
+          </h3>
+
+          <p>
+            Connect volunteers with practical delivery and
+            community tasks.
+          </p>
+
+        </article>
+
+
+        <article class="feature">
+
+          <div class="feature-number">
+            04
+          </div>
+
+          <h3>
+            Partners
+          </h3>
+
+          <p>
+            Give shops and organisations a meaningful role
+            in supporting the community.
+          </p>
+
+        </article>
+
+
+      </div>
 
     </div>
 
-    <div class="footer-column">
+  </section>
 
-      <h4>Get Involved</h4>
 
-      <a href="hope.html">Support HOPE</a>
-      <a href="#">Volunteer</a>
-      <a href="#">Partner</a>
-      <a href="#">Contact Us</a>
+  <!-- APP -->
+
+  <section class="app-section">
+
+    <div class="container">
+
+      <div class="app-card">
+
+        <div class="app-content">
+
+          <div class="label"
+               style="color:rgba(255,255,255,.55);">
+
+            DIGITAL PLATFORM
+
+          </div>
+
+          <h2>
+            HOPE is powered
+            by people and technology.
+          </h2>
+
+          <p>
+            The HOPE web application helps organise the
+            different parts of the project while keeping
+            the human side of community support at the centre.
+          </p>
+
+
+          <div class="app-list">
+
+            <div>
+              <span>✓</span>
+              Family support management
+            </div>
+
+            <div>
+              <span>✓</span>
+              Donor contribution tracking
+            </div>
+
+            <div>
+              <span>✓</span>
+              Shop and volunteer coordination
+            </div>
+
+            <div>
+              <span>✓</span>
+              Delivery proof and accountability
+            </div>
+
+            <div>
+              <span>✓</span>
+              Digital records and reporting
+            </div>
+
+          </div>
+
+
+          <a
+            href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-white"
+            style="margin-top:30px;">
+
+            Launch HOPE App
+            ↗
+
+          </a>
+
+        </div>
+
+
+        <div class="app-image"></div>
+
+      </div>
 
     </div>
 
-    <div class="footer-column">
+  </section>
 
-      <h4>Contact</h4>
 
-      <a href="mailto:lifedevelopmentfoundation.uk@gmail.com">
-        Email LDF
+  <!-- FINAL CTA -->
+
+  <section class="final">
+
+    <div class="container">
+
+      <div class="label">
+        BE PART OF HOPE
+      </div>
+
+      <h2>
+        Together, we can turn
+        <span>support into opportunity.</span>
+      </h2>
+
+      <p>
+        LDF HOPE is only the beginning of a wider journey
+        towards stronger families, greater opportunity and
+        thriving communities.
+      </p>
+
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
+        target="_blank"
+        rel="noopener"
+        class="btn">
+
+        Open LDF HOPE
+        ↗
+
       </a>
 
-      <span>United Kingdom</span>
-      <span>Sri Lanka</span>
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <p>
+        © <span id="year"></span>
+        Life Development Foundation.
+        All rights reserved.
+      </p>
+
+      <a
+        href="index.html"
+        class="footer-home">
+
+        Life Development Foundation
+
+      </a>
 
     </div>
 
-  </div>
-
-  <div class="footer-bottom">
-
-    <span>
-      © 2026 Life Development Foundation. All rights reserved.
-    </span>
-
-    <span>
-      Built for people. Built for impact.
-    </span>
-
-  </div>
-
-</footer>
+  </footer>
 
 
+  <script>
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 <script src="/LDF-HOPE/js/main.js"></script>
 
 </body>
+
 </html>
