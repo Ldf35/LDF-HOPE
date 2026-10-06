@@ -1,197 +1,180 @@
-/* =====================================================
-   LDF MAIN JAVASCRIPT
-===================================================== */
+/* =========================================================
+   LDF WEBSITE JAVASCRIPT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* -----------------------------------------
+     YEAR
+  ----------------------------------------- */
+
+  const year = document.getElementById("year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 
 
-/* -----------------------------------------------------
-   HEADER SCROLL EFFECT
------------------------------------------------------ */
+  /* -----------------------------------------
+     HEADER SCROLL
+  ----------------------------------------- */
 
-const header = document.getElementById("siteHeader");
+  const header = document.getElementById("siteHeader");
 
-window.addEventListener("scroll", () => {
+  function updateHeader() {
 
     if (window.scrollY > 40) {
-
-        header.classList.add("scrolled");
-
+      header.classList.add("scrolled");
     } else {
-
-        header.classList.remove("scrolled");
-
+      header.classList.remove("scrolled");
     }
 
-});
+  }
+
+  window.addEventListener("scroll", updateHeader);
+
+  updateHeader();
 
 
-/* -----------------------------------------------------
-   MOBILE MENU
------------------------------------------------------ */
+  /* -----------------------------------------
+     MOBILE MENU
+  ----------------------------------------- */
 
-const menuToggle =
-    document.getElementById("menuToggle");
+  const menuButton = document.getElementById("menuButton");
+  const mobileNav = document.getElementById("mobileNav");
 
-const mobileMenu =
-    document.getElementById("mobileMenu");
+  if (menuButton && mobileNav) {
 
+    menuButton.addEventListener("click", () => {
 
-menuToggle.addEventListener("click", () => {
-
-    mobileMenu.classList.toggle("active");
-
-});
-
-
-/* -----------------------------------------------------
-   CLOSE MOBILE MENU AFTER CLICK
------------------------------------------------------ */
-
-document.querySelectorAll(
-    ".mobile-menu a"
-).forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("active");
+      mobileNav.classList.toggle("open");
 
     });
 
-});
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileNav.classList.remove("open");
+
+      });
+
+    });
+
+  }
 
 
-/* -----------------------------------------------------
-   CURRENT YEAR
------------------------------------------------------ */
+  /* -----------------------------------------
+     SMOOTH ANCHOR LINKS
+  ----------------------------------------- */
 
-const year =
-    document.getElementById("year");
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-if (year) {
+    link.addEventListener("click", event => {
 
-    year.textContent =
-        new Date().getFullYear();
+      const targetId = link.getAttribute("href");
 
-}
+      if (!targetId || targetId === "#") return;
+
+      const target = document.querySelector(targetId);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      const headerHeight =
+        document.querySelector(".site-header").offsetHeight;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        headerHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+
+    });
+
+  });
 
 
-/* -----------------------------------------------------
-   IMPACT COUNTERS
------------------------------------------------------ */
+  /* -----------------------------------------
+     SCROLL REVEAL
+  ----------------------------------------- */
 
-const counters =
-    document.querySelectorAll("[data-count]");
+  const revealElements = document.querySelectorAll(
+    ".about-grid, .purpose-item, .focus-row, .process-step, .impact-feature, .involved-item, .contact-grid"
+  );
+
+  revealElements.forEach(element => {
+    element.classList.add("reveal");
+  });
 
 
-const observer =
-    new IntersectionObserver(
-        entries => {
+  const observer = new IntersectionObserver(
+    entries => {
 
-            entries.forEach(entry => {
+      entries.forEach(entry => {
 
-                if (!entry.isIntersecting) {
-                    return;
-                }
+        if (entry.isIntersecting) {
 
-                const counter =
-                    entry.target;
+          entry.target.classList.add("visible");
 
-                const target =
-                    Number(
-                        counter.dataset.count
-                    );
+          observer.unobserve(entry.target);
 
-                let current = 0;
-
-                const increment =
-                    Math.max(
-                        1,
-                        Math.ceil(target / 60)
-                    );
-
-                const updateCounter =
-                    () => {
-
-                        current += increment;
-
-                        if (current >= target) {
-
-                            counter.textContent =
-                                target + "+";
-
-                            return;
-
-                        }
-
-                        counter.textContent =
-                            current;
-
-                        requestAnimationFrame(
-                            updateCounter
-                        );
-
-                    };
-
-                updateCounter();
-
-                observer.unobserve(counter);
-
-            });
-
-        },
-        {
-            threshold: .5
         }
-    );
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
 
 
-counters.forEach(counter => {
-
-    observer.observe(counter);
-
-});
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
 
 
-/* -----------------------------------------------------
-   SIMPLE REVEAL ANIMATION
------------------------------------------------------ */
+  /* -----------------------------------------
+     FOCUS ROW STAGGER
+  ----------------------------------------- */
 
-const revealItems =
-    document.querySelectorAll(
-        ".focus-card, .purpose-card, .involved-card, .process-step"
-    );
+  document.querySelectorAll(".focus-row").forEach((row, index) => {
 
+    row.style.transitionDelay = `${index * 60}ms`;
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: .12
-        }
-    );
+  });
 
 
-revealItems.forEach(item => {
+  /* -----------------------------------------
+     PROCESS STAGGER
+  ----------------------------------------- */
 
-    item.classList.add("reveal");
+  document.querySelectorAll(".process-step").forEach((step, index) => {
 
-    revealObserver.observe(item);
+    step.style.transitionDelay = `${index * 80}ms`;
+
+  });
+
+
+  /* -----------------------------------------
+     PREVENT EMPTY SOCIAL LINKS
+  ----------------------------------------- */
+
+  document.querySelectorAll('a[href="#"]').forEach(link => {
+
+    link.addEventListener("click", event => {
+
+      event.preventDefault();
+
+    });
+
+  });
 
 });
