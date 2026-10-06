@@ -1,1470 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="theme-color"
-    content="#002B7F">
-
-  <meta
-    name="description"
-    content="LDF HOPE — Hope for Families. A transparent community support platform by Life Development Foundation.">
-
-  <title>LDF HOPE | Hope for Families</title>
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/LDF-HOPE/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#002B7F">
+  <meta name="description" content="Life Development Foundation — Empowering lives through dignity, education, and community action.">
+  <title>Life Development Foundation | HOPE for Families</title>
 
   <style>
-
     :root {
-
       --blue: #002B7F;
       --blue-light: #0055D4;
+      --blue-bright: #0070F3;
       --blue-dark: #001B52;
       --deep: #001338;
-
-      --white: #fff;
+      --white: #ffffff;
       --soft: #F5F8FD;
-
       --text: #10213B;
       --muted: #66748B;
-
       --border: #E5EAF2;
-
-      --shadow:
-        0 25px 70px rgba(0,30,80,.12);
-
+      --shadow: 0 25px 70px rgba(30, 60, 114, 0.12);
+      --accent-green: #16A34A;
+      --accent-purple: #7B61FF;
+      --accent-teal: #06B6D4;
     }
 
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
     body {
-
-      font-family:
-        "DM Sans",
-        sans-serif;
-
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
       color: var(--text);
-
-      background:
-        var(--soft);
-
+      background: var(--soft);
       line-height: 1.7;
-
       overflow-x: hidden;
-
     }
 
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-
-    .container {
-
-      width:
-        min(
-          calc(100% - 40px),
-          1150px
-        );
-
-      margin:
-        0 auto;
-
-    }
-
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(calc(100% - 40px), 1180px); margin: 0 auto; }
 
     /* HEADER */
-
     .header {
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 100;
-
-      background:
-        rgba(255,255,255,.95);
-
-      backdrop-filter:
-        blur(20px);
-
-      border-bottom:
-        1px solid var(--border);
-
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,43,127,0.08);
     }
-
-
     .nav {
-
-      min-height: 75px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content:
-        space-between;
-
+      min-height: 78px; display: flex; align-items: center; justify-content: space-between;
     }
-
-
-    .brand {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 11px;
-
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo {
+      height: 52px; width: auto;
+      animation: gentleFloat 4s ease-in-out infinite;
     }
-
-
-    .brand-mark {
-
-      width: 43px;
-      height: 43px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 12px;
-
-      background:
-        var(--blue);
-
-      color: white;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      letter-spacing:
-        -.07em;
-
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
-
-
-    .brand-name {
-
-      display: flex;
-
-      flex-direction: column;
-
-      line-height: 1.15;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
+    .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-name strong { font-size: 15px; font-weight: 800; color: var(--blue); }
+    .brand-name span { font-size: 11px; color: var(--muted); }
+    
+    .nav-links { display: flex; gap: 22px; font-size: 13px; font-weight: 600; align-items: center; }
+    .nav-links a:hover { color: var(--blue-light); }
+    .nav-button {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: white !important; padding: 10px 20px; border-radius: 100px;
+      box-shadow: 0 4px 14px rgba(0,43,127,0.2);
+      transition: transform 0.3s ease;
     }
+    .nav-button:hover { transform: translateY(-2px); }
 
-
-    .brand-name strong {
-
-      font-size: 13px;
-
-      font-weight: 800;
-
+    .social-header { display: flex; gap: 8px; margin-left: 6px; }
+    .social-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--soft); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; transition: all 0.3s ease;
     }
-
-
-    .brand-name span {
-
-      font-size: 10px;
-
-      color: var(--muted);
-
+    .social-icon:hover {
+      background: var(--blue); color: white; transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,43,127,0.25);
     }
-
-
-    .back-link {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      padding:
-        10px 16px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        100px;
-
-      color:
-        var(--blue);
-
-      font-size: 12px;
-
-      font-weight: 800;
-
-      transition: .3s ease;
-
-    }
-
-
-    .back-link:hover {
-
-      background:
-        var(--blue);
-
-      border-color:
-        var(--blue);
-
-      color: white;
-
-      transform:
-        translateY(-2px);
-
-    }
-
 
     /* HERO */
-
     .hero {
-
-      position: relative;
-
-      overflow: hidden;
-
-      min-height:
-        650px;
-
-      display: flex;
-
-      align-items: center;
-
-      color: white;
-
-      background:
-        var(--deep);
-
+      position: relative; overflow: hidden; min-height: 720px;
+      display: flex; align-items: center; color: white;
+      background: var(--deep);
     }
-
-
     .hero-bg {
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          100deg,
-          rgba(0,19,56,.96),
-          rgba(0,43,127,.76)
-        ),
-        url("assets/hope.jpg");
-
-      background-size:
-        cover;
-
-      background-position:
-        center;
-
-      animation:
-        zoom 18s ease-in-out
-        infinite alternate;
-
+      position: absolute; inset: 0;
+      background: 
+        linear-gradient(105deg, rgba(0,19,56,0.96), rgba(0,43,127,0.75)),
+        linear-gradient(135deg, #002B7F, #0055D4, #0070F3, #00B5D8);
+      background-size: 400% 400%;
+      animation: heroGradient 18s ease infinite alternate;
     }
-
-
-    @keyframes zoom {
-
-      from {
-        transform: scale(1);
-      }
-
-      to {
-        transform: scale(1.08);
-      }
-
+    @keyframes heroGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
-
-
-    .hero-content {
-
-      position: relative;
-
-      z-index: 2;
-
-      max-width:
-        800px;
-
-      padding:
-        100px 0;
-
-    }
-
-
+    .hero-content { position: relative; z-index: 2; padding: 100px 0; }
     .eyebrow {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      color:
-        rgba(255,255,255,.65);
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      letter-spacing:
-        .2em;
-
+      display: inline-flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.7); font-size: 12px;
+      font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
     }
-
-
-    .eyebrow::before {
-
-      content: "";
-
-      width: 25px;
-
-      height: 2px;
-
-      background: white;
-
-    }
-
-
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: rgba(255,255,255,0.4); }
     .hero h1 {
-
-      margin-top:
-        25px;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        clamp(
-          4rem,
-          10vw,
-          8rem
-        );
-
-      line-height: .8;
-
-      letter-spacing:
-        -.1em;
-
-      font-weight: 800;
-
+      font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: 0.92;
+      letter-spacing: -0.05em; margin: 28px 0 24px;
     }
-
-
-    .hero h1 span {
-
-      display: block;
-
-      color:
-        rgba(255,255,255,.58);
-
-    }
-
-
-    .hero h2 {
-
-      margin-top:
-        35px;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        clamp(
-          2rem,
-          5vw,
-          3.8rem
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.06em;
-
-    }
-
-
+    .hero h1 span { color: rgba(255,255,255,0.5); display: block; }
     .hero p {
-
-      max-width:
-        650px;
-
-      margin-top:
-        25px;
-
-      color:
-        rgba(255,255,255,.7);
-
-      font-size:
-        15px;
-
+      max-width: 700px; font-size: 18px;
+      color: rgba(255,255,255,0.75); margin-bottom: 40px; line-height: 1.8;
     }
-
-
-    .hero-buttons {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      margin-top:
-        35px;
-
-    }
-
-
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; }
     .btn {
-
-      min-height:
-        52px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 10px;
-
-      padding:
-        0 22px;
-
-      border-radius:
-        100px;
-
-      font-size:
-        12px;
-
-      font-weight:
-        800;
-
-      transition:
-        .3s ease;
-
+      min-height: 56px; display: inline-flex; align-items: center;
+      justify-content: center; gap: 10px; padding: 0 28px;
+      border-radius: 100px; font-size: 14px; font-weight: 800;
+      transition: all 0.3s ease; border: none; cursor: pointer;
     }
-
-
-    .btn:hover {
-
-      transform:
-        translateY(-3px);
-
-    }
-
-
+    .btn:hover { transform: translateY(-3px); }
     .btn-white {
-
-      background:
-        white;
-
-      color:
-        var(--blue);
-
+      background: white; color: var(--blue);
+      box-shadow: 0 8px 24px rgba(0,43,127,0.2);
     }
-
-
     .btn-outline {
-
-      color: white;
-
-      border:
-        1px solid
-        rgba(255,255,255,.4);
-
-      background:
-        rgba(255,255,255,.05);
-
+      color: white; border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
-
-    /* FEATURES */
-
-    .features {
-
-      padding:
-        100px 0;
-
-      background:
-        white;
-
-    }
-
-
-    .section-heading {
-
-      max-width:
-        720px;
-
-    }
-
-
+    /* SECTION BASE */
+    section { padding: 90px 0; }
+    .section-heading { text-align: center; max-width: 800px; margin: 0 auto 60px; }
     .label {
-
-      color:
-        var(--blue);
-
-      font-size:
-        10px;
-
-      font-weight:
-        800;
-
-      letter-spacing:
-        .2em;
-
+      color: var(--blue); font-size: 12px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
     }
-
-
     .section-heading h2 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 14px 0 20px;
+      line-height: 1.2;
+    }
+    .section-heading h2 span { color: var(--blue); }
+    .section-heading p { color: var(--muted); font-size: 17px; line-height: 1.7; }
 
-      margin-top:
-        15px;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        clamp(
-          2.5rem,
-          5vw,
-          4.5rem
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.06em;
-
+    /* ABOUT — MISSION & VISION */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; }
+    .about-card {
+      background: white; padding: 45px; border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0,43,127,0.06);
+      border-top: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .about-card:hover {
+      transform: translateY(-6px);
+      border-top-color: var(--blue);
+      box-shadow: 0 16px 40px rgba(0,43,127,0.1);
+    }
+    .about-card h3 {
+      font-size: 24px; margin-bottom: 18px;
+      color: var(--blue); display: flex; align-items: center; gap: 10px;
+    }
+    .about-card h3 span { font-size: 28px; }
+    .about-card p {
+      color: var(--muted); margin-bottom: 20px; font-size: 15px; line-height: 1.8;
+    }
+    .about-card p strong { color: var(--text); font-weight: 700; }
+    .check { display: flex; gap: 12px; margin: 12px 0; font-weight: 600; font-size: 14px; }
+    .check i {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #E6F7EE; color: var(--accent-green);
+      display: flex; align-items: center; justify-content: center;
+      font-style: normal; font-size: 14px; flex-shrink: 0;
     }
 
-
-    .section-heading h2 span {
-
-      color:
-        var(--blue);
-
+    /* FOCUS AREAS */
+    .focus-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     }
-
-
-    .section-heading p {
-
-      margin-top:
-        20px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        15px;
-
+    .focus-card {
+      background: white; padding: 36px 30px; border-radius: 20px;
+      border: 1px solid var(--border); transition: all 0.35s ease;
     }
-
-
-    .feature-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        18px;
-
-      margin-top:
-        55px;
-
+    .focus-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: var(--blue-light);
     }
-
-
-    .feature {
-
-      padding:
-        30px;
-
-      background:
-        var(--soft);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        20px;
-
-      transition:
-        .3s ease;
-
+    .focus-icon {
+      font-size: 36px; margin-bottom: 18px;
+      display: inline-block; padding: 12px;
+      background: var(--soft); border-radius: 14px;
     }
+    .focus-card h3 { font-size: 19px; margin-bottom: 10px; color: var(--text); }
+    .focus-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
 
-
-    .feature:hover {
-
-      transform:
-        translateY(-7px);
-
-      box-shadow:
-        var(--shadow);
-
+    /* HOW IT WORKS */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
     }
-
-
-    .feature-number {
-
-      color:
-        var(--blue);
-
-      font-size:
-        11px;
-
-      font-weight:
-        800;
-
+    .step-card {
+      background: white; padding: 34px 24px; border-radius: 20px;
+      text-align: center; border: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
-
-
-    .feature h3 {
-
-      margin-top:
-        20px;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        20px;
-
-      letter-spacing:
-        -.04em;
-
+    .step-card::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      width: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--accent-teal));
+      transition: all 0.4s ease; transform: translateX(-50%);
     }
-
-
-    .feature p {
-
-      margin-top:
-        8px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
+    .step-card:hover::before { width: 100%; }
+    .step-number {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: white; display: grid; place-items: center;
+      font-weight: 800; margin: 0 auto 18px; font-size: 18px;
     }
+    .step-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--blue); }
+    .step-card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
-
-    /* APP */
-
-    .app-section {
-
-      padding:
-        100px 0;
-
-      background:
-        var(--soft);
-
+    /* SUPPORT OPTIONS */
+    .support-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
     }
-
-
-    .app-card {
-
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      align-items:
-        center;
-
-      overflow:
-        hidden;
-
-      border-radius:
-        30px;
-
-      background:
-        var(--blue);
-
-      color:
-        white;
-
-      box-shadow:
-        var(--shadow);
-
+    .support-card {
+      background: white; padding: 34px 26px; border-radius: 20px;
+      text-align: center; border: 2px solid transparent;
+      transition: all 0.35s ease;
     }
-
-
-    .app-content {
-
-      padding:
-        65px;
-
+    .support-card:hover {
+      transform: translateY(-8px); box-shadow: var(--shadow);
     }
-
-
-    .app-content h2 {
-
-      margin-top:
-        15px;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        clamp(
-          2.5rem,
-          5vw,
-          4rem
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.06em;
-
+    .support-card.featured {
+      border-color: var(--blue); background: linear-gradient(180deg, #F0F5FF, white);
+      transform: scale(1.03);
     }
-
-
-    .app-content p {
-
-      margin-top:
-        20px;
-
-      color:
-        rgba(255,255,255,.65);
-
-      font-size:
-        14px;
-
+    .support-card.featured::before {
+      content: "Most Popular"; position: absolute; top: -12px; left: 50%;
+      transform: translateX(-50%); background: var(--blue); color: white;
+      font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 100px;
+      letter-spacing: 0.1em;
     }
-
-
-    .app-list {
-
-      display:
-        grid;
-
-      gap:
-        10px;
-
-      margin-top:
-        25px;
-
+    .support-card h3 { font-size: 18px; margin-bottom: 6px; }
+    .amount {
+      font-size: 30px; font-weight: 800; color: var(--blue);
+      margin: 12px 0; line-height: 1;
     }
-
-
-    .app-list div {
-
-      display:
-        flex;
-
-      gap:
-        10px;
-
-      color:
-        rgba(255,255,255,.8);
-
-      font-size:
-        12px;
-
+    .support-card p { color: var(--muted); font-size: 13px; min-height: 40px; line-height: 1.6; }
+    .support-card .btn {
+      width: 100%; margin-top: 18px;
+      background: var(--blue); color: white;
+      font-size: 14px; min-height: 48px;
     }
-
-
-    .app-list span {
-
-      color:
-        white;
-
-    }
-
-
-    .app-image {
-
-      min-height:
-        500px;
-
-      background:
-        linear-gradient(
-          rgba(0,43,127,.15),
-          rgba(0,19,56,.4)
-        ),
-        url("assets/hope.jpg");
-
-      background-size:
-        cover;
-
-      background-position:
-        center;
-
-    }
-
+    .support-card .btn:hover { background: var(--blue-light); }
 
     /* CTA */
-
-    .final {
-
-      padding:
-        100px 0;
-
-      text-align:
-        center;
-
-      background:
-        white;
-
+    .cta-section {
+      background: linear-gradient(135deg, #002B7F, #0055D4, #0070F3);
+      background-size: 300% 300%;
+      animation: ctaGradient 10s ease infinite alternate;
+      color: white; text-align: center;
     }
-
-
-    .final h2 {
-
-      max-width:
-        800px;
-
-      margin:
-        0 auto;
-
-      font-family:
-        "Manrope",
-        sans-serif;
-
-      font-size:
-        clamp(
-          2.5rem,
-          6vw,
-          5rem
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.07em;
-
+    @keyframes ctaGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
-
-
-    .final h2 span {
-
-      color:
-        var(--blue);
-
+    .cta-section h2 { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 16px; }
+    .cta-section p {
+      max-width: 650px; margin: 0 auto 32px;
+      color: rgba(255,255,255,0.75); font-size: 17px; line-height: 1.8;
     }
-
-
-    .final p {
-
-      max-width:
-        600px;
-
-      margin:
-        20px auto 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        14px;
-
-    }
-
-
-    .final .btn {
-
-      margin-top:
-        30px;
-
-      background:
-        var(--blue);
-
-      color:
-        white;
-
-    }
-
+    .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
     /* FOOTER */
-
     footer {
-
-      padding:
-        35px 0;
-
-      background:
-        var(--deep);
-
-      color:
-        white;
-
+      background: var(--deep); color: white; padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .footer-logo { height: 44px; width: auto; }
+    .footer-brand-text h3 { font-size: 18px; margin-bottom: 12px; }
+    .footer-brand-text p {
+      color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-size: 13px; margin-bottom: 16px; opacity: 0.7;
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .footer-col a {
+      display: block; margin-bottom: 11px; font-size: 14px;
+      color: rgba(255,255,255,0.6); transition: color 0.2s ease;
+    }
+    .footer-col a:hover { color: white; }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px;
+      font-size: 12px; color: rgba(255,255,255,0.35);
     }
 
-
-    .footer-inner {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        20px;
-
-    }
-
-
-    footer p {
-
-      color:
-        rgba(255,255,255,.45);
-
-      font-size:
-        11px;
-
-    }
-
-
-    .footer-home {
-
-      color:
-        rgba(255,255,255,.65);
-
-      font-size:
-        11px;
-
-      font-weight:
-        700;
-
-    }
-
-
-    @media(max-width:900px) {
-
-      .feature-grid {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
+    /* MOBILE */
+    @media(max-width:960px) {
+      .nav-links > a:not(.nav-button) { display: none; }
+      .about-grid, .focus-grid, .steps-grid, .support-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-
-      .app-card {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-      .app-image {
-
-        min-height:
-          350px;
-
-        order:
-          -1;
-
-      }
-
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-header { display: none; }
     }
-
-
     @media(max-width:600px) {
-
-      .container {
-
-        width:
-          calc(100% - 30px);
-
+      .container { width: calc(100% - 30px); }
+      section { padding: 60px 0; }
+      .about-grid, .focus-grid, .steps-grid, .support-grid {
+        grid-template-columns: 1fr;
       }
-
-      .hero {
-
-        min-height:
-          620px;
-
-      }
-
-      .hero-content {
-
-        padding:
-          80px 0;
-
-      }
-
-      .feature-grid {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-      .app-content {
-
-        padding:
-          40px 25px;
-
-      }
-
-      .hero-buttons {
-
-        flex-direction:
-          column;
-
-      }
-
-      .hero-buttons .btn {
-
-        width:
-          100%;
-
-      }
-
-      .footer-inner {
-
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-
-      }
-
+      .hero-buttons, .cta-buttons { flex-direction: column; }
+      .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-card { padding: 30px 24px; }
     }
-
-
   </style>
-
 </head>
-
-
 <body>
 
-
-  <!-- HEADER -->
-
-  <header class="header">
-
-    <div class="container nav">
-
-      <a href="index.html" class="brand">
-
-        <div class="brand-mark">
-          LDF
-        </div>
-
-        <div class="brand-name">
-
-          <strong>
-            Life Development
-          </strong>
-
-          <span>
-            Foundation
-          </span>
-
-        </div>
-
-      </a>
-
-
-      <a
-        href="index.html"
-        class="back-link">
-
-        ← Back to LDF
-
-      </a>
-
-    </div>
-
-  </header>
-
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-bg"></div>
-
-    <div class="container">
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          LIFE DEVELOPMENT FOUNDATION
-        </div>
-
-        <h1>
-          HOPE
-          <span>for Families.</span>
-        </h1>
-
-        <h2>
-          Support a family.
-          Strengthen a future.
-        </h2>
-
-        <p>
-          LDF HOPE is a community-focused platform designed
-          to connect families, donors, volunteers, shops and
-          partners through a transparent and organised support
-          system.
-        </p>
-
-
-        <div class="hero-buttons">
-
-          <a
-            href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-white">
-
-            Open HOPE App
-            ↗
-
-          </a>
-
-
-          <a
-            href="#how"
-            class="btn btn-outline">
-
-            How HOPE works
-            ↓
-
-          </a>
-
-        </div>
-
+<!-- HEADER -->
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Life Development Foundation" class="brand-logo" onerror="this.style.display='none'">
+      <div class="brand-name">
+        <strong>Life Development Foundation</strong>
+        <span>Registered • UK & Supporting Sri Lanka</span>
       </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#focus">Focus Areas</a>
+      <a href="#how">How It Works</a>
+      <a href="#support">Get Involved</a>
+      <a href="#contact">Contact</a>
+      <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" class="nav-button">Open HOPE App ↗</a>
+      <div class="social-header">
+        <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-icon">f</a>
+        <a href="https://www.instagram.com/lifedevelopment_foundation?stkn=OXliOHFnZjR3cjQw&utm_source=qr" target="_blank" rel="noopener" class="social-icon">📷</a>
+        <a href="https://www.linkedin.com/in/kasun-udayanga-35b8291a4?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="social-icon">in</a>
+        <a href="https://youtube.com/@ldf-uk?si=GykWDm6q4iPDI1h7" target="_blank" rel="noopener" class="social-icon">▶</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">Life Development Foundation</div>
+      <h1>HOPE<br><span>for Families.</span></h1>
+      <p>Building stronger futures through knowledge, opportunity, human connection and meaningful community action. We believe support should create <strong>dignity — not dependency</strong>.</p>
+      <div class="hero-buttons">
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" rel="noopener" class="btn btn-white">
+          🚀 Open HOPE Platform
+        </a>
+        <a href="#about" class="btn btn-outline">Learn Our Story ↓</a>
+      </div>
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- ABOUT — MISSION & VISION -->
+<section id="about">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Who We Are</div>
+      <h2>Empowering people to build <span>better lives</span></h2>
+      <p>Life Development Foundation is built on a simple but powerful belief: every person has the potential to thrive — they just need the right opportunities, respect, and support to do so.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3><span>🎯</span> Our Mission</h3>
+        <p>To empower individuals, families, and communities through <strong>education, skills development, and compassionate practical support</strong> — creating lasting change that comes from within.</p>
+        <p>We don't just give aid. We walk alongside people, helping them discover their own strengths and build sustainable independence.</p>
+        <div class="check"><i>✓</i> Dignity-centred support — people first</div>
+        <div class="check"><i>✓</i> Fully transparent & accountable</div>
+        <div class="check"><i>✓</i> Community-led, not top-down</div>
+        <div class="check"><i>✓</i> Sustainable long-term impact</div>
+        <div class="check"><i>✓</i> Local partnerships create double value</div>
+      </div>
+      <div class="about-card">
+        <h3><span>🔭</span> Our Vision</h3>
+        <p>A world where every family has the resources, confidence, and opportunities to flourish — <strong>regardless of where they were born</strong>.</p>
+        <p>HOPE is our first step: meeting immediate needs with dignity. Beyond that, we are building an ecosystem of growth — from food security to full life development.</p>
+        <div class="check"><i>✓</i> Education & lifelong learning</div>
+        <div class="check"><i>✓</i> Career pathways & economic independence</div>
+        <div class="check"><i>✓</i> Strong, resilient families</div>
+        <div class="check"><i>✓</i> Mental health & emotional wellbeing</div>
+        <div class="check"><i>✓</i> Care for our environment & communities</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- FOCUS AREAS -->
+<section id="focus" style="background:white;">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Our Focus Areas</div>
+      <h2>Every area connects to <span>one shared goal</span></h2>
+      <p>We don't just address symptoms — we build foundations. Here's how we're making a difference:</p>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-icon">🛡️</div>
+        <h3>Child Protection</h3>
+        <p>Safe, nurturing environments where every child can grow, learn, and feel protected. We work with trusted local communities to ensure no one is left behind.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🏠</div>
+        <h3>Family Empowerment</h3>
+        <p>Strengthening families through practical resources, guidance, and community connection. When families are strong, communities thrive.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">💼</div>
+        <h3>Career Development</h3>
+        <p>Skills training, mentorship, and pathways to meaningful work. True independence comes from opportunity — and we're building it together.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">📚</div>
+        <h3>Academic Success</h3>
+        <p>Educational support, resources, and encouragement for every learner. Knowledge is the most powerful tool for change.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🌱</div>
+        <h3>Mental Wellbeing</h3>
+        <p>Compassionate support, community care, and resilience-building for every heart and mind. We care for people — not just problems.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🌍</div>
+        <h3>Community & Environment</h3>
+        <p>Responsible stewardship of our shared home. Sustainable practices that protect resources for future generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- PURPOSE -->
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">How HOPE Works</div>
+      <h2>Simple, transparent, <span>trustworthy</span></h2>
+      <p>Technology serves people — ensuring every contribution is seen, counted, and shared. No hidden layers, no lost funds, just real help reaching real families.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3>Identify</h3>
+        <p>Families are identified through trusted community leaders — with dignity, consent, and respect at every step.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3>Organise</h3>
+        <p>Families are grouped into support batches based on need — coordinated, fair, and fully recorded in our open system.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3>Prepare</h3>
+        <p>Local partner shops assemble quality grocery packages — supporting the local economy twice over with every delivery.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <h3>Deliver & Prove</h3>
+        <p>Volunteers deliver with care — and capture photo proof & signatures. You see exactly where your help went.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="features" id="how">
+<!-- SUPPORT -->
+<section id="support" style="background:white;">
+  <div class="container">
+    <div class="section-heading">
+      <div class="label">Get Involved</div>
+      <h2>Choose your way to <span>make a difference</span></h2>
+      <p>Every contribution — big or small — becomes part of a dignified cycle of support. And every step is visible to you.</p>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>Starter</h3>
+        <div class="amount">Rs. 2,500</div>
+        <p>Essential grocery support for one family for one cycle</p>
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" class="btn">Support ↗</a>
+      </div>
+      <div class="support-card">
+        <h3>Family</h3>
+        <div class="amount">Rs. 5,000</div>
+        <p>A fuller, nourishing package — complete monthly care</p>
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" class="btn">Support ↗</a>
+      </div>
+      <div class="support-card featured">
+        <h3>Community</h3>
+        <div class="amount">Rs. 7,500</div>
+        <p>Supporting multiple families — building strength across neighbourhoods</p>
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" class="btn">Support ↗</a>
+      </div>
+      <div class="support-card">
+        <h3>Champion</h3>
+        <div class="amount">Rs. 10,000+</div>
+        <p>Leading partner — creating lasting change across communities</p>
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" class="btn">Support ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="container">
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>Be part of <span>something bigger</span></h2>
+    <p>Whether you give, volunteer, partner, or simply share — your presence matters. Together we don't just give aid — we build hope.</p>
+    <div class="cta-buttons">
+      <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank" rel="noopener" class="btn btn-white">🚀 Open HOPE Platform</a>
+      <a href="mailto:lifedevelopmentfoundation.uk@gmail.com" class="btn btn-outline">✉ Email Us Directly</a>
+    </div>
+  </div>
+</section>
 
-      <div class="section-heading">
-
-        <div class="label">
-          THE IDEA
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Life Development Foundation" class="footer-logo" onerror="this.style.display='none'">
+        <div class="footer-brand-text">
+          <h3>LDF HOPE</h3>
+          <p>A Life Development Foundation initiative — building stronger families, responsible citizens, and thriving communities. Registered in the United Kingdom & serving Sri Lanka.</p>
         </div>
-
-        <h2>
-          More than a donation.
-          <span>A system for dignity.</span>
-        </h2>
-
-        <p>
-          HOPE is being developed to make community support
-          more organised, transparent and meaningful.
-          The focus is on helping families while building
-          a wider ecosystem of people and organisations
-          working together.
-        </p>
-
       </div>
-
-
-      <div class="feature-grid">
-
-
-        <article class="feature">
-
-          <div class="feature-number">
-            01
-          </div>
-
-          <h3>
-            Families
-          </h3>
-
-          <p>
-            Identify and support families through an organised
-            and respectful process.
-          </p>
-
-        </article>
-
-
-        <article class="feature">
-
-          <div class="feature-number">
-            02
-          </div>
-
-          <h3>
-            Donors
-          </h3>
-
-          <p>
-            Allow supporters to contribute towards specific
-            support packages and cycles.
-          </p>
-
-        </article>
-
-
-        <article class="feature">
-
-          <div class="feature-number">
-            03
-          </div>
-
-          <h3>
-            Volunteers
-          </h3>
-
-          <p>
-            Connect volunteers with practical delivery and
-            community tasks.
-          </p>
-
-        </article>
-
-
-        <article class="feature">
-
-          <div class="feature-number">
-            04
-          </div>
-
-          <h3>
-            Partners
-          </h3>
-
-          <p>
-            Give shops and organisations a meaningful role
-            in supporting the community.
-          </p>
-
-        </article>
-
-
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#about">About Us</a>
+        <a href="#focus">Focus Areas</a>
+        <a href="#how">How It Works</a>
+        <a href="#support">Get Involved</a>
       </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- APP -->
-
-  <section class="app-section">
-
-    <div class="container">
-
-      <div class="app-card">
-
-        <div class="app-content">
-
-          <div class="label"
-               style="color:rgba(255,255,255,.55);">
-
-            DIGITAL PLATFORM
-
-          </div>
-
-          <h2>
-            HOPE is powered
-            by people and technology.
-          </h2>
-
-          <p>
-            The HOPE web application helps organise the
-            different parts of the project while keeping
-            the human side of community support at the centre.
-          </p>
-
-
-          <div class="app-list">
-
-            <div>
-              <span>✓</span>
-              Family support management
-            </div>
-
-            <div>
-              <span>✓</span>
-              Donor contribution tracking
-            </div>
-
-            <div>
-              <span>✓</span>
-              Shop and volunteer coordination
-            </div>
-
-            <div>
-              <span>✓</span>
-              Delivery proof and accountability
-            </div>
-
-            <div>
-              <span>✓</span>
-              Digital records and reporting
-            </div>
-
-          </div>
-
-
-          <a
-            href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-white"
-            style="margin-top:30px;">
-
-            Launch HOPE App
-            ↗
-
-          </a>
-
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec" target="_blank">HOPE App ↗</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:lifedevelopmentfoundation.uk@gmail.com">lifedevelopmentfoundation.uk@gmail.com</a>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-icon">f</a>
+          <a href="https://www.instagram.com/lifedevelopment_foundation?stkn=OXliOHFnZjR3cjQw&utm_source=qr" target="_blank" rel="noopener" class="social-icon">📷</a>
+          <a href="https://www.linkedin.com/in/kasun-udayanga-35b8291a4?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="social-icon">in</a>
+          <a href="https://youtube.com/@ldf-uk?si=GykWDm6q4iPDI1h7" target="_blank" rel="noopener" class="social-icon">▶</a>
         </div>
-
-
-        <div class="app-image"></div>
-
       </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FINAL CTA -->
-
-  <section class="final">
-
-    <div class="container">
-
-      <div class="label">
-        BE PART OF HOPE
+      <div class="footer-col">
+        <h4>Follow Our Journey</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.7;">See daily updates, stories from families, and behind-the-scenes progress across all our channels.</p>
       </div>
-
-      <h2>
-        Together, we can turn
-        <span>support into opportunity.</span>
-      </h2>
-
-      <p>
-        LDF HOPE is only the beginning of a wider journey
-        towards stronger families, greater opportunity and
-        thriving communities.
-      </p>
-
-
-      <a
-        href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCzIAtwJJ6gKxId8X5cZ6cg8u/exec"
-        target="_blank"
-        rel="noopener"
-        class="btn">
-
-        Open LDF HOPE
-        ↗
-
-      </a>
-
     </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container footer-inner">
-
-      <p>
-        © <span id="year"></span>
-        Life Development Foundation.
-        All rights reserved.
-      </p>
-
-      <a
-        href="index.html"
-        class="footer-home">
-
-        Life Development Foundation
-
-      </a>
-
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Life Development Foundation. All rights reserved.</p>
+      <p>Registered in United Kingdom • Supporting Sri Lanka</p>
     </div>
+  </div>
+</footer>
 
-  </footer>
-
-
-  <script>
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
-<script src="/LDF-HOPE/js/main.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
-
 </html>
