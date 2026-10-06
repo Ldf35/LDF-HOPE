@@ -1,180 +1,146 @@
-/* =========================================================
-   LDF WEBSITE JAVASCRIPT
-========================================================= */
+// ==================================================
+// LDF-HOPE — Professional Animations & Effects
+// Free • Lightweight • Mobile-Friendly
+// ==================================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('💙 LDF-HOPE — Ready & Animated');
 
-  /* -----------------------------------------
-     YEAR
-  ----------------------------------------- */
-
-  const year = document.getElementById("year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
-
-
-  /* -----------------------------------------
-     HEADER SCROLL
-  ----------------------------------------- */
-
-  const header = document.getElementById("siteHeader");
-
-  function updateHeader() {
-
-    if (window.scrollY > 40) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-
-  }
-
-  window.addEventListener("scroll", updateHeader);
-
-  updateHeader();
-
-
-  /* -----------------------------------------
-     MOBILE MENU
-  ----------------------------------------- */
-
-  const menuButton = document.getElementById("menuButton");
-  const mobileNav = document.getElementById("mobileNav");
-
-  if (menuButton && mobileNav) {
-
-    menuButton.addEventListener("click", () => {
-
-      mobileNav.classList.toggle("open");
-
-    });
-
-
-    mobileNav.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        mobileNav.classList.remove("open");
-
-      });
-
-    });
-
-  }
-
-
-  /* -----------------------------------------
-     SMOOTH ANCHOR LINKS
-  ----------------------------------------- */
-
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", event => {
-
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
+  // ==============================================
+  // 1. SMOOTH SCROLL FOR ALL LINKS
+  // ==============================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
       const target = document.querySelector(targetId);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      const headerHeight =
-        document.querySelector(".site-header").offsetHeight;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerHeight;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     });
-
   });
 
+  // ==============================================
+  // 2. FADE-IN ANIMATION ON SCROLL
+  // ==============================================
+  const fadeElements = document.querySelectorAll('.section, .card, .hero');
+  
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-  /* -----------------------------------------
-     SCROLL REVEAL
-  ----------------------------------------- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
 
-  const revealElements = document.querySelectorAll(
-    ".about-grid, .purpose-item, .focus-row, .process-step, .impact-feature, .involved-item, .contact-grid"
-  );
-
-  revealElements.forEach(element => {
-    element.classList.add("reveal");
+  // Initial state + observe
+  fadeElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    fadeObserver.observe(el);
   });
 
+  // ==============================================
+  // 3. HEADER BACKGROUND ON SCROLL
+  // ==============================================
+  const header = document.querySelector('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 20px rgba(0,43,127,0.15)';
+        header.style.padding = '0.8rem 1rem';
+      } else {
+        header.style.boxShadow = '0 2px 10px rgba(0,43,127,0.1)';
+        header.style.padding = '1.2rem 1rem';
+      }
+    });
+  }
 
-  const observer = new IntersectionObserver(
-    entries => {
+  // ==============================================
+  // 4. NUMBER ANIMATION — COUNT UP EFFECT
+  // ==============================================
+  const animateNumbers = () => {
+    const numbers = document.querySelectorAll('.stat-num, .number');
+    numbers.forEach(el => {
+      const finalText = el.textContent;
+      const finalValue = parseInt(finalText.replace(/\D/g, ''));
+      
+      if (!isNaN(finalValue) && finalValue > 0 && !el.dataset.animated) {
+        el.dataset.animated = 'true';
+        let current = 0;
+        const duration = 2000; // ms
+        const step = finalValue / (duration / 16);
+        
+        const counter = setInterval(() => {
+          current += step;
+          if (current >= finalValue) {
+            el.textContent = finalText;
+            clearInterval(counter);
+          } else {
+            el.textContent = Math.floor(current) + finalText.replace(/[0-9]/g, '');
+          }
+        }, 16);
+      }
+    });
+  };
 
+  // Trigger when stats section visible
+  const statsSection = document.querySelector('.stats-bar, .section');
+  if (statsSection) {
+    const numObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-
         if (entry.isIntersecting) {
-
-          entry.target.classList.add("visible");
-
-          observer.unobserve(entry.target);
-
+          animateNumbers();
+          numObserver.unobserve(entry.target);
         }
-
       });
+    }, { threshold: 0.3 });
+    numObserver.observe(statsSection);
+  }
 
-    },
-    {
-      threshold: 0.12
-    }
-  );
-
-
-  revealElements.forEach(element => {
-    observer.observe(element);
-  });
-
-
-  /* -----------------------------------------
-     FOCUS ROW STAGGER
-  ----------------------------------------- */
-
-  document.querySelectorAll(".focus-row").forEach((row, index) => {
-
-    row.style.transitionDelay = `${index * 60}ms`;
-
-  });
-
-
-  /* -----------------------------------------
-     PROCESS STAGGER
-  ----------------------------------------- */
-
-  document.querySelectorAll(".process-step").forEach((step, index) => {
-
-    step.style.transitionDelay = `${index * 80}ms`;
-
-  });
-
-
-  /* -----------------------------------------
-     PREVENT EMPTY SOCIAL LINKS
-  ----------------------------------------- */
-
-  document.querySelectorAll('a[href="#"]').forEach(link => {
-
-    link.addEventListener("click", event => {
-
-      event.preventDefault();
-
+  // ==============================================
+  // 5. BUTTON & CARD INTERACTION EFFECTS
+  // ==============================================
+  document.querySelectorAll('.btn, .card').forEach(el => {
+    el.addEventListener('mousedown', function() {
+      this.style.transform = 'scale(0.97)';
     });
-
+    el.addEventListener('mouseup mouseleave', function() {
+      this.style.transform = '';
+    });
   });
 
-});
+  // ==============================================
+  // 6. CURRENT PAGE HIGHLIGHT IN MENU
+  // ==============================================
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('nav a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath.includes(href) && href !== '#')) {
+      link.style.fontWeight = 'bold';
+      link.style.textDecoration = 'underline';
+      link.style.textUnderlineOffset = '4px';
+    }
+  });
+
+  // ==============================================
+  // 7. LOADING FADE-IN
+  // ==============================================
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.opacity = '1';
+  }, 100);
+
+}); // END DOMContentLoaded
