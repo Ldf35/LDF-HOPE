@@ -165,4 +165,29 @@ footer {
     grid-template-columns: 1fr;
   }
   .content-card { padding: 25px 20px; }
+  
+}
+/* ==================================================
+   LIGHT ANIMATION STYLES
+   ================================================== */
+.fade-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prevent flash on load */
+html {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Active page indicator */
+.nav-links a.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
 }
