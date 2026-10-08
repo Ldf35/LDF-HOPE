@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LDF Ecosystem</title>
+<style>
+:root { --bg:#EDF3FF; --surface:#FFFFFF; --ink:#0B2347; --muted:#55698F; --line:#C9D9F4; --navy:#0B2A5B; --accent:#1456C8; --accent-ink:#FFFFFF; --soft:#E3EDFF; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#07142B; --surface:#0E2347; --ink:#E6EEFF; --muted:#9DB2DA; --line:#234478; --navy:#07142B; --accent:#5C9BFF; --accent-ink:#06163A; --soft:#16305E; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg:#07142B; --surface:#0E2347; --ink:#E6EEFF; --muted:#9DB2DA; --line:#234478; --navy:#07142B; --accent:#5C9BFF; --accent-ink:#06163A; --soft:#16305E; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { background: var(--navy); color: #fff; padding: 28px 16px 36px; }
+header .in, main { max-width: 760px; margin: 0 auto; }
+h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.15; }
+header p { margin: 0; opacity: .85; }
+main { padding: 20px 16px 40px; display: flex; flex-direction: column; gap: 16px; }
+.intro { margin-top: -18px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.intro p { margin: 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card h2 { margin: 0; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); }
+.badge { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--soft); color: var(--accent); }
+.badge.soon { color: var(--muted); }
+.btn { margin-top: auto; align-self: flex-start; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; padding: 10px 16px; border-radius: 10px; min-height: 44px; display: inline-flex; align-items: center; }
+.btn.ghost { background: var(--soft); color: var(--ink); }
+.btn.off { opacity: .5; pointer-events: none; }
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.flow ol { margin: 8px 0 0; padding-left: 20px; }
+.flow li { margin: 4px 0; }
+.foot { text-align: center; color: var(--muted); font-size: 13px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <h1>LDF Ecosystem</h1>
+    <p>Learn something. Share something. Help someone. Grow together.</p>
+  </div>
+</header>
+<main>
+  <section class="intro">
+    <p>One place to start. Choose what you need, and LDF connects it to the next step. AI helps you find your way. People make the decisions that matter.</p>
+  </section>
+
+  <section class="grid" aria-label="LDF services">
+    <article class="card">
+      <span class="badge soon">Coming soon</span>
+      <h2>LDF Hope</h2>
+      <p>Family support with dignity. Privacy is protected and nobody is publicly labelled.</p>
+      <span class="btn off">Open</span>
+    </article>
+
+    <article class="card">
+      <span class="badge">Available now</span>
+      <h2>LDF Learning</h2>
+      <p>Practical courses, lessons, quizzes, missions and certificates.</p>
+      <a class="btn" href="index.html#/learn">Start learning</a>
+    </article>
+
+    <article class="card">
+      <span class="badge soon">Coming soon</span>
+      <h2>LDF Jobs &amp; Opportunities</h2>
+      <p>Verified jobs, training and employer connections. LDF recommends. Employers decide.</p>
+      <span class="btn off">Open</span>
+    </article>
+
+    <article class="card">
+      <span class="badge">Available now</span>
+      <h2>LDF AI Agent</h2>
+      <p>Ask where to start, get help with a lesson, or practise an interview. The AI does not make decisions for you.</p>
+      <a class="btn ghost" href="index.html#/companion">Ask the agent</a>
+    </article>
+  </section>
+
+  <section class="flow">
+    <h2 style="margin:0;font-size:18px">Your journey</h2>
+    <ol>
+      <li>Join LDF and set one goal.</li>
+      <li>Learn and practise with a real-world mission.</li>
+      <li>Get support from a tutor, mentor or the AI agent.</li>
+      <li>Share what you learn and help someone else.</li>
+    </ol>
+  </section>
+
+  <p><a class="btn" href="index.html#/login">Sign in or join</a></p>
+  <p class="foot">LDF recommends. People decide. Your data is only visible to the people you allow.</p>
+</main>
+</body>
+</html>
