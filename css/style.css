@@ -1096,32 +1096,76 @@ main {
     animation: none !important;
   }
 }
+/* =========================
+   FOOTER
+========================= */
+.site-footer {
+  padding: 65px 0 25px;
+  background: #001438;
+  color: white;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 50px;
+}
+.footer-brand p {
+  max-width: 300px;
+  margin-top: 18px;
+  color: #8fa4c4;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.footer-title {
+  margin-bottom: 14px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  color: #8fa4c4;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.footer-links a:hover {
+  color: white;
+  transform: translateX(4px);
+}
 /* ——— Small Horizontal Social Links ——— */
 .ldf-social {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  padding: 15px 20px;
-  margin-top: 20px;
+  margin: 14px 0;
   flex-wrap: wrap;
 }
 .ldf-social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: #f1f1f1;
-  color: #333;
+  background: rgba(255,255,255,0.08);
+  color: #b8c7e0;
   font-size: 14px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 .ldf-social a:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.05);
   color: #fff;
+  background: #1877f2;
 }
 .ldf-social a:nth-child(1):hover { background: #1877f2; } /* Facebook */
 .ldf-social a:nth-child(2):hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); } /* Instagram */
@@ -1130,14 +1174,26 @@ main {
 .ldf-social a:nth-child(5):hover { background: #25d366; } /* WhatsApp */
 .ldf-social a:nth-child(6):hover { background: #333; } /* GitHub */
 
-/* Optional label */
-.social-label {
-  font-size: 13px;
-  color: #777;
-  margin: 0 8px 0 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Extra links in Connect column */
+.footer-links > a[href^="mailto:"],
+.footer-links > a[href*="script.google.com"] {
+  margin-top: 6px;
+  display: inline-block;
 }
-  .social-icons a { width: 40px; height: 40px; font-size: 16px; }
-  .social-icons { gap: 12px; }
+.footer-links > a[href^="mailto:"]:hover,
+.footer-links > a[href*="script.google.com"]:hover {
+  transform: translateX(4px);
+  color: #fff;
 }
+
+.footer-bottom {
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #7186a7;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
