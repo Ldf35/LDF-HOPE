@@ -1,159 +1,230 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const header = document.querySelector(".site-header");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const mobileNav = document.querySelector(".mobile-nav");
-
-  /* =========================
-     HEADER
-  ========================= */
-
-  function updateHeader() {
-    if (!header) return;
-
-    if (window.scrollY > 30) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  }
-
-  window.addEventListener("scroll", updateHeader);
-  updateHeader();
+const header = document.getElementById("header");
+const menu = document.getElementById("mobileMenu");
+const nav = document.getElementById("navigation");
 
 
-  /* =========================
-     MOBILE MENU
-  ========================= */
+/* HEADER */
 
-  if (menuToggle && mobileNav) {
+function headerScroll(){
 
-    menuToggle.addEventListener("click", function () {
+if(!header) return;
 
-      mobileNav.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
+if(window.scrollY > 40){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
 
-    });
+}
 
-    mobileNav.querySelectorAll("a").forEach(function (link) {
+headerScroll();
 
-      link.addEventListener("click", function () {
-
-        mobileNav.classList.remove("active");
-        document.body.classList.remove("menu-open");
-
-      });
-
-    });
-  }
+window.addEventListener("scroll",headerScroll,{
+passive:true
+});
 
 
-  /* =========================
-     ESCAPE MENU
-  ========================= */
+/* MOBILE MENU */
 
-  document.addEventListener("keydown", function (event) {
+if(menu && nav){
 
-    if (event.key === "Escape") {
+menu.addEventListener("click",()=>{
 
-      if (mobileNav) {
-        mobileNav.classList.remove("active");
-      }
+nav.classList.toggle("mobile-open");
 
-      document.body.classList.remove("menu-open");
-    }
+});
 
-  });
+}
 
 
-  /* =========================
-     REVEAL ANIMATION
-  ========================= */
+/* CLOSE MOBILE MENU */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+document.querySelectorAll("nav a").forEach(link=>{
 
-  if ("IntersectionObserver" in window) {
+link.addEventListener("click",()=>{
 
-    const observer = new IntersectionObserver(
-      function (entries) {
+if(nav){
+nav.classList.remove("mobile-open");
+}
 
-        entries.forEach(function (entry) {
+});
 
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("active");
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach(function (element) {
-      observer.observe(element);
-    });
-
-  } else {
-
-    revealElements.forEach(function (element) {
-      element.classList.add("active");
-    });
-
-  }
+});
 
 
-  /* =========================
-     SMOOTH INTERNAL LINKS
-  ========================= */
+/* SMOOTH INTERNAL LINKS */
 
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
-    link.addEventListener("click", function (event) {
+link.addEventListener("click",event=>{
 
-      const id = link.getAttribute("href");
+const target=document.querySelector(
+link.getAttribute("href")
+);
 
-      if (!id || id === "#") return;
+if(!target) return;
 
-      const target = document.querySelector(id);
+event.preventDefault();
 
-      if (!target) return;
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-      event.preventDefault();
+});
 
-      const headerHeight =
-        header ? header.offsetHeight : 0;
-
-      const position =
-        target.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerHeight;
-
-      window.scrollTo({
-        top: position,
-        behavior: "smooth"
-      });
-
-    });
-
-  });
+});
 
 
-  /* =========================
-     CURRENT YEAR
-  ========================= */
+/* REVEAL ANIMATIONS */
 
-  document.querySelectorAll("[data-year]").forEach(function (element) {
+const reveal=document.querySelectorAll(
+".programme-main,.small-programme,.focus-card,.involved-card,.timeline-row,.gallery-item,.programme-detail"
+);
 
-    element.textContent =
-      new Date().getFullYear();
+const revealObserver=new IntersectionObserver(
+entries=>{
 
-  });
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+revealObserver.unobserve(entry.target);
+
+}
+
+});
+
+},
+{
+threshold:.08
+}
+);
+
+reveal.forEach(item=>{
+revealObserver.observe(item);
+});
+
+
+/* GALLERY FILTER */
+
+const filters=document.querySelectorAll(
+".gallery-filter button"
+);
+
+const galleryItems=document.querySelectorAll(
+".gallery-item"
+);
+
+filters.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+filters.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+const filter=button.dataset.filter;
+
+galleryItems.forEach(item=>{
+
+if(
+filter==="all" ||
+item.classList.contains(filter)
+){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+});
+
+});
+
+
+/* IMAGE LIGHTBOX */
+
+const images=document.querySelectorAll(
+".gallery-item img,.wall-photo img,.mini-gallery img"
+);
+
+let modal;
+
+function createModal(){
+
+modal=document.createElement("div");
+
+modal.className="image-modal";
+
+modal.innerHTML=`
+<button class="image-close">×</button>
+<img src="" alt="">
+`;
+
+document.body.appendChild(modal);
+
+modal.addEventListener("click",event=>{
+
+if(
+event.target===modal ||
+event.target.classList.contains("image-close")
+){
+
+modal.classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+});
+
+}
+
+createModal();
+
+images.forEach(image=>{
+
+image.addEventListener("click",()=>{
+
+const modalImage=modal.querySelector("img");
+
+modalImage.src=image.src;
+modalImage.alt=image.alt;
+
+modal.classList.add("open");
+
+document.body.style.overflow="hidden";
+
+});
+
+});
+
+
+document.addEventListener("keydown",event=>{
+
+if(
+event.key==="Escape" &&
+modal
+){
+
+modal.classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+});
 
 });
