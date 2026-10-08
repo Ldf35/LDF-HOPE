@@ -1,41 +1,159 @@
-```javascript
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("mainNav");
+  const header = document.querySelector(".site-header");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileNav = document.querySelector(".mobile-nav");
 
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("open");
+  /* =========================
+     HEADER
+  ========================= */
+
+  function updateHeader() {
+    if (!header) return;
+
+    if (window.scrollY > 30) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", updateHeader);
+  updateHeader();
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  if (menuToggle && mobileNav) {
+
+    menuToggle.addEventListener("click", function () {
+
+      mobileNav.classList.toggle("active");
+      document.body.classList.toggle("menu-open");
+
+    });
+
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+
+      link.addEventListener("click", function () {
+
+        mobileNav.classList.remove("active");
+        document.body.classList.remove("menu-open");
+
+      });
+
     });
   }
 
-  // Close mobile menu after selecting a page
-  document.querySelectorAll(".main-nav a").forEach(link => {
-    link.addEventListener("click", () => {
-      mainNav?.classList.remove("open");
-    });
+
+  /* =========================
+     ESCAPE MENU
+  ========================= */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      if (mobileNav) {
+        mobileNav.classList.remove("active");
+      }
+
+      document.body.classList.remove("menu-open");
+    }
+
   });
 
-  // Current year
-  const year = document.getElementById("year");
 
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
+  /* =========================
+     REVEAL ANIMATION
+  ========================= */
 
-  // Header shadow on scroll
-  const header = document.getElementById("header");
+  const revealElements =
+    document.querySelectorAll(".reveal");
 
-  if (header) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) {
-        header.style.boxShadow = "0 10px 35px rgba(0,0,0,.08)";
-      } else {
-        header.style.boxShadow = "none";
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("active");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
       }
+    );
+
+    revealElements.forEach(function (element) {
+      observer.observe(element);
     });
+
+  } else {
+
+    revealElements.forEach(function (element) {
+      element.classList.add("active");
+    });
+
   }
+
+
+  /* =========================
+     SMOOTH INTERNAL LINKS
+  ========================= */
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+    link.addEventListener("click", function (event) {
+
+      const id = link.getAttribute("href");
+
+      if (!id || id === "#") return;
+
+      const target = document.querySelector(id);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      const headerHeight =
+        header ? header.offsetHeight : 0;
+
+      const position =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight;
+
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      });
+
+    });
+
+  });
+
+
+  /* =========================
+     CURRENT YEAR
+  ========================= */
+
+  document.querySelectorAll("[data-year]").forEach(function (element) {
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
 
 });
-```
