@@ -1,196 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery | Life Development Foundation</title>
-
+<meta
+name="description"
+content="Photo gallery of the Life Development Foundation and HOPE Project — our work, communities and impact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 <link rel="stylesheet" href="/LDF-HOPE/css/style.css">
+<style>
+/* ——— Gallery Page Specific Styles ——— */
+.gallery-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.gallery-intro p {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.gallery-caption {
+  padding: 16px;
+}
+.gallery-caption h4 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+.gallery-caption p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
 
+/* ——— Social Icons ——— */
+.ldf-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.ldf-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #b8c7e0;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.ldf-social a:hover {
+  transform: translateY(-2px);
+  color: #fff;
+}
+.ldf-social a:nth-child(1):hover { background: #1877f2; }
+.ldf-social a:nth-child(2):hover { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+.ldf-social a:nth-child(3):hover { background: #0a66c2; }
+.ldf-social a:nth-child(4):hover { background: #ff0000; }
+.ldf-social a:nth-child(5):hover { background: #25d366; }
+.ldf-social a:nth-child(6):hover { background: #333; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
-
 <body>
-
-<header class="header inner-header">
-
-<div class="container nav">
-
-<a class="logo" href="index.html">
-<div class="logo-box">LDF</div>
-<div class="logo-name">
+<header class="site-header">
+<div class="container nav-container">
+<a href="/LDF-HOPE/" class="brand">
+<img
+src="/LDF-HOPE/7e64c73a-b2e1-4843-b294-a0825088490c.jpeg"
+alt="Life Development Foundation"
+class="brand-logo">
+<div class="brand-text">
 <strong>Life Development</strong>
 <span>Foundation</span>
 </div>
 </a>
-
-<nav>
-
-<a href="index.html">Home</a>
-<a href="index.html#story">Our Story</a>
-<a href="programmes.html">Programmes</a>
-<a href="gallery.html" class="active">Gallery</a>
-<a href="hope.html">HOPE</a>
-
-</nav>
-
-<a href="hope.html" class="header-button">
-Open HOPE <span>↗</span>
+<nav class="desktop-nav">
+<a href="/LDF-HOPE/">Home</a>
+<a href="/LDF-HOPE/about.html">About</a>
+<a href="/LDF-HOPE/programs.html">Our Work</a>
+<a href="/LDF-HOPE/hope.html">HOPE</a>
+<a href="/LDF-HOPE/impact.html">Impact</a>
+<a href="/LDF-HOPE/get-involved.html">Get Involved</a>
+<a href="/LDF-HOPE/gallery.html" class="active">Gallery</a>
+<a href="/LDF-HOPE/contact.html">Contact</a>
+<a
+href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCz"
+target="_blank"
+rel="noopener"
+class="nav-app">
+HOPE App ↗
 </a>
-
+</nav>
+<button class="menu-toggle" aria-label="Menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+<div class="mobile-nav">
+<a href="/LDF-HOPE/">Home</a>
+<a href="/LDF-HOPE/about.html">About</a>
+<a href="/LDF-HOPE/programs.html">Our Work</a>
+<a href="/LDF-HOPE/hope.html">HOPE</a>
+<a href="/LDF-HOPE/impact.html">Impact</a>
+<a href="/LDF-HOPE/get-involved.html">Get Involved</a>
+<a href="/LDF-HOPE/gallery.html" class="active">Gallery</a>
+<a href="/LDF-HOPE/contact.html">Contact</a>
+<a
+href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCz"
+target="_blank"
+class="mobile-app">
+Open HOPE App ↗
+</a>
 </div>
 </header>
 
-
 <main>
-
-<section class="page-hero gallery-hero">
-
+<section class="section">
 <div class="container">
-
-<div class="label">
-<span>01</span>
-LDF GALLERY
+<div class="gallery-intro reveal">
+<div class="eyebrow">Our Story in Pictures</div>
+<h2>Gallery — <span>Moments that Matter</span></h2>
+<p>From preparation to delivery, from individuals to communities — a look at the work, the people and the progress of the Life Development Foundation and the HOPE Project.</p>
 </div>
 
-<h1>
-People.
-<br>
-<span>Programmes. Moments.</span>
-</h1>
-
-<p>
-A visual collection from the LDF journey.
-</p>
-
+<div class="gallery-grid">
+<!-- Photo 1 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-1.jpg" alt="Community support in action" loading="lazy">
+<div class="gallery-caption">
+<h4>Support in Action</h4>
+<p>Working together to deliver practical help with dignity.</p>
+</div>
 </div>
 
+<!-- Photo 2 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-2.jpg" alt="Preparing family packages" loading="lazy">
+<div class="gallery-caption">
+<h4>Family Packages</h4>
+<p>Carefully assembled supplies ready for distribution.</p>
+</div>
+</div>
+
+<!-- Photo 3 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-3.jpg" alt="Volunteer team" loading="lazy">
+<div class="gallery-caption">
+<h4>Our Volunteers</h4>
+<p>Dedicated people making a real difference every day.</p>
+</div>
+</div>
+
+<!-- Photo 4 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-4.jpg" alt="Local partner shops" loading="lazy">
+<div class="gallery-caption">
+<h4>Local Partnerships</h4>
+<p>Building strong links with shops and suppliers in the community.</p>
+</div>
+</div>
+
+<!-- Photo 5 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-5.jpg" alt="Distribution day" loading="lazy">
+<div class="gallery-caption">
+<h4>Delivering with Respect</h4>
+<p>Every delivery carried out with care and dignity.</p>
+</div>
+</div>
+
+<!-- Photo 6 -->
+<div class="gallery-item reveal">
+<img src="/LDF-HOPE/gallery/photo-6.jpg" alt="Growing together" loading="lazy">
+<div class="gallery-caption">
+<h4>Stronger Together</h4>
+<p>Connecting people, building confidence and creating lasting change.</p>
+</div>
+</div>
+</div>
+
+</div>
 </section>
-
-
-<section class="section gallery-page">
-
-<div class="container">
-
-<div class="gallery-filter">
-
-<button class="active" data-filter="all">All</button>
-<button data-filter="leadership">Leadership</button>
-<button data-filter="education">Education</button>
-<button data-filter="community">Community</button>
-</div>
-
-
-<div class="full-gallery">
-
-
-<div class="gallery-item tall leadership">
-<img src="LDF-HOPE/leadership/leadership-01.jpg.jpg"
-alt="LDF leadership programme">
-<div>Leadership</div>
-</div>
-
-
-<div class="gallery-item education">
-<img src="LDF-HOPE/education/education-02.jpg.jpg"
-alt="LDF education programme">
-<div>Education</div>
-</div>
-
-
-<div class="gallery-item community">
-<img src="LDF-HOPE/community/community-03.jpg"
-alt="LDF community programme">
-<div>Community</div>
-</div>
-
-
-<div class="gallery-item leadership">
-<img src="LDF-HOPE/leadership/leadership-04.jpg.jpg"
-alt="LDF leadership activity">
-<div>Leadership</div>
-</div>
-
-
-<div class="gallery-item wide education">
-<img src="LDF-HOPE/education/education-05.jpg.jpg"
-alt="LDF educational activity">
-<div>Education</div>
-</div>
-
-
-<div class="gallery-item community">
-<img src="LDF-HOPE/ community/ community-06.jpg.jpg"
-alt="LDF community activity">
-<div>Community</div>
-</div>
-
-
-<div class="gallery-item leadership">
-<img src="LDF-HOPE/leadership/leadership-07.jpg.jpg"
-alt="LDF programme">
-<div>Leadership</div>
-</div>
-
-
-<div class="gallery-item community">
-<img src="LDF-HOPE/gallery/gallery-08.jpg"
-alt="LDF community">
-<div>gallery</div>
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="blue-section gallery-end">
-
-<div class="container">
-
-<h2>
-The journey
-<br>
-<span>continues.</span>
-</h2>
-
-<a href="hope.html" class="button primary">
-Discover HOPE <span>↗</span>
-</a>
-
-</div>
-
-</section>
-
 </main>
 
-
-<footer class="footer">
-
+<footer class="site-footer">
 <div class="container">
-
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="/LDF-HOPE/" class="brand">
+<img
+src="/LDF-HOPE/7e64c73a-b2e1-4843-b294-a0825088490c.jpeg"
+class="brand-logo"
+alt="LDF">
+<div class="brand-text">
+<strong style="color:#fff;">Life Development</strong>
+<span style="color:#8fa4c4;">Foundation</span>
+</div>
+</a>
+<p>
+Building stronger lives. Creating thriving communities.
+</p>
+</div>
+<div>
+<div class="footer-title">Explore</div>
+<div class="footer-links">
+<a href="/LDF-HOPE/about.html">About</a>
+<a href="/LDF-HOPE/vision.html">Vision</a>
+<a href="/LDF-HOPE/story.html">Our Story</a>
+<a href="/LDF-HOPE/programs.html">Programmes</a>
+</div>
+</div>
+<div>
+<div class="footer-title">Projects</div>
+<div class="footer-links">
+<a href="/LDF-HOPE/hope.html">LDF HOPE</a>
+<a href="/LDF-HOPE/impact.html">Impact</a>
+<a href="/LDF-HOPE/focus.html">Focus Areas</a>
+<a href="/LDF-HOPE/get-involved.html">Get Involved</a>
+</div>
+</div>
+<div>
+<div class="footer-title">Connect</div>
+<div class="footer-links">
+<a href="/LDF-HOPE/contact.html">Contact LDF</a>
+<div class="ldf-social">
+  <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+    <i class="fab fa-youtube"></i>
+  </a>
+  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://github.com/ldf35" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+<a href="https://script.google.com/macros/s/AKfycbyXmnYe5RiG8bFVPamU2XUTQ7HWYsAjoyaZg_XvslBXCz"
+target="_blank">
+HOPE App ↗
+</a>
+<a href="mailto:lifedevelopmentfoundation.uk@gmail.com">
+Email LDF
+</a>
+</div>
+</div>
+</div>
 <div class="footer-bottom">
-
-<span>© 2026 Life Development Foundation</span>
-<span>LDF • HOPE • LEARNING</span>
-
+<span> © <span data-year></span> Life Development Foundation. </span> <span>
+  
+LDF • HOPE • LEARNING
+</span>
 </div>
-
 </div>
-
 </footer>
-
-
-<script src="/LDF-HOPE/js/main.js"></script>
-
+<script src="/LDF-HOPE/Js/main.js"></script>
 </body>
 </html>
