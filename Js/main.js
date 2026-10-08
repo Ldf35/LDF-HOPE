@@ -1,159 +1,118 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileNav = document.querySelector(".mobile-nav");
+  let isMenuOpen = false; // Track menu state
 
   /* =========================
-     HEADER
+     HEADER SCROLL EFFECT
   ========================= */
-
   function updateHeader() {
     if (!header) return;
-
     if (window.scrollY > 30) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
   }
-
-  window.addEventListener("scroll", updateHeader);
+  // Throttle scroll events for better performance
+  let scrollTimeout;
+  window.addEventListener("scroll", function () {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateHeader, 10);
+  });
   updateHeader();
-
 
   /* =========================
      MOBILE MENU
   ========================= */
+  function openMenu() {
+    isMenuOpen = true;
+    mobileNav.classList.add("active");
+    document.body.classList.add("menu-open");
+    menuToggle.setAttribute("aria-expanded", "true");
+  }
+  function closeMenu() {
+    isMenuOpen = false;
+    mobileNav.classList.remove("active");
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
 
   if (menuToggle && mobileNav) {
-
     menuToggle.addEventListener("click", function () {
-
-      mobileNav.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
-
+      isMenuOpen ? closeMenu() : openMenu();
     });
 
+    // Close menu when clicking any link inside
     mobileNav.querySelectorAll("a").forEach(function (link) {
-
-      link.addEventListener("click", function () {
-
-        mobileNav.classList.remove("active");
-        document.body.classList.remove("menu-open");
-
-      });
-
+      link.addEventListener("click", closeMenu);
     });
   }
 
-
   /* =========================
-     ESCAPE MENU
+     ESCAPE KEY CLOSE
   ========================= */
-
   document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-
-      if (mobileNav) {
-        mobileNav.classList.remove("active");
-      }
-
-      document.body.classList.remove("menu-open");
+    if (event.key === "Escape" && isMenuOpen) {
+      closeMenu();
     }
-
   });
 
-
   /* =========================
-     REVEAL ANIMATION
+     REVEAL ANIMATION — REFIINED
   ========================= */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
+  const revealElements = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
-
     const observer = new IntersectionObserver(
       function (entries) {
-
         entries.forEach(function (entry) {
-
           if (entry.isIntersecting) {
-
             entry.target.classList.add("active");
-
             observer.unobserve(entry.target);
-
           }
-
         });
-
       },
       {
-        threshold: 0.12
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px" // Trigger slightly earlier
       }
     );
-
     revealElements.forEach(function (element) {
       observer.observe(element);
     });
-
   } else {
-
+    // Fallback: show everything immediately
     revealElements.forEach(function (element) {
       element.classList.add("active");
     });
-
   }
 
-
   /* =========================
-     SMOOTH INTERNAL LINKS
+     SMOOTH SCROLL — OFFSET FIXED
   ========================= */
-
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-
     link.addEventListener("click", function (event) {
-
       const id = link.getAttribute("href");
-
       if (!id || id === "#") return;
-
       const target = document.querySelector(id);
-
       if (!target) return;
 
       event.preventDefault();
-
-      const headerHeight =
-        header ? header.offsetHeight : 0;
-
-      const position =
-        target.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerHeight;
+      const headerHeight = header ? header.offsetHeight : 0;
+      const position = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: position,
         behavior: "smooth"
       });
-
     });
-
   });
-
 
   /* =========================
      CURRENT YEAR
   ========================= */
-
   document.querySelectorAll("[data-year]").forEach(function (element) {
-
-    element.textContent =
-      new Date().getFullYear();
-
+    element.textContent = new Date().getFullYear();
   });
-
 });
