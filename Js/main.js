@@ -125,8 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      CURRENT YEAR
   ========================= */
-      document.getElementById("ldf-footer-year").textContent =
-      new Date().getFullYear();
+   const footerYear = document.getElementById("ldf-footer-year");
+
+if (footerYear) {
+  footerYear.textContent = new Date().getFullYear();
+}
 
   
 const LDF_AI_URL = "https://ldf-ai-gateway.lifedevelopmentfoundation-docs.workers.dev/";
