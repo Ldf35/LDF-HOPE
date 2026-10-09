@@ -205,7 +205,7 @@ Explore HOPE →
 </section>
 
 </main>
-
+```html
 <footer class="ldf-footer">
   <div class="ldf-footer__container">
 
@@ -213,88 +213,122 @@ Explore HOPE →
 
       <!-- Brand -->
       <section class="ldf-footer__brand">
-        <h2 class="ldf-footer__brand-name">
-          Life Development Foundation
-        </h2>
+        <a href="index.html" class="ldf-footer__brand-link"
+           aria-label="Life Development Foundation home">
+          <span class="ldf-footer__logo-mark" aria-hidden="true">LDF</span>
+          <span class="ldf-footer__brand-name">
+            Life Development
+            <strong>Foundation</strong>
+          </span>
+        </a>
 
         <p class="ldf-footer__tagline">
           Building stronger lives.<br>
           Creating thriving communities.
         </p>
+
+        <p class="ldf-footer__description">
+          We share knowledge, create opportunities and support
+          positive change for a stronger, more inclusive future.
+        </p>
+
+        <div class="ldf-footer__socials">
+          <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Facebook">f</a>
+
+          <a href="https://www.instagram.com/lifedevelopment_foundation?stkn=OXliOHFnZjR3cjQw&utm_source=qr"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Instagram">ig</a>
+
+          <a href="https://www.linkedin.com/in/kasun-udayanga-35b8291a4"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn">in</a>
+
+          <a href="https://youtube.com/@ldf-uk?si=GykWDm6q4iPDI1h7"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="YouTube">▶</a>
+        </div>
       </section>
 
       <!-- Explore -->
-      <nav class="ldf-footer__section" aria-label="Explore">
+      <nav class="ldf-footer__section" aria-label="Explore LDF">
         <h3>Explore</h3>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="vision.html">Vision</a></li>
-          <li><a href="story.html">Our Story</a></li>
-          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="about.html">About LDF <span>↗</span></a></li>
+          <li><a href="vision.html">Our Vision <span>↗</span></a></li>
+          <li><a href="story.html">Our Story <span>↗</span></a></li>
+          <li><a href="programmes.html">Programmes <span>↗</span></a></li>
+          <li><a href="gallery.html">Gallery <span>↗</span></a></li>
         </ul>
       </nav>
 
       <!-- Projects -->
-      <nav class="ldf-footer__section" aria-label="Projects">
-        <h3>Projects</h3>
+      <nav class="ldf-footer__section" aria-label="LDF projects">
+        <h3>Our Work</h3>
         <ul>
-          <li><a href="hope.html">LDF HOPE</a></li>
-          <li><a href="impact.html">Impact</a></li>
-          <li><a href="focus.html">Focus Areas</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-          <li><a href="/LDF-HOPE/gallery.html" class="active">Gallery</a></li>
+          <li><a href="hope.html">LDF HOPE <span>↗</span></a></li>
+          <li><a href="impact.html">Our Impact <span>↗</span></a></li>
+          <li><a href="focus.html">Focus Areas <span>↗</span></a></li>
+          <li><a href="get-involved.html">Get Involved <span>↗</span></a></li>
+          <li><a href="contact.html">Contact Us <span>↗</span></a></li>
         </ul>
       </nav>
 
-      <!-- Social media -->
+      <!-- Connect -->
       <section class="ldf-footer__section ldf-footer__connect">
-        <h3>Connect</h3>
+        <h3>Stay Connected</h3>
 
-        <div class="ldf-footer__socials">
+        <p>
+          Follow our journey and discover ways to contribute
+          to positive community change.
+        </p>
 
-          <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Facebook">
-            f
-          </a>
+        <a class="ldf-footer__contact-link" href="contact.html">
+          Connect with LDF <span aria-hidden="true">→</span>
+        </a>
 
-          <a href="https://www.instagram.com/lifedevelopment_foundation?stkn=OXliOHFnZjR3cjQw&utm_source=qr"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Instagram">
-            ig
-          </a>
-
-          <a href="https://www.linkedin.com/in/kasun-udayanga-35b8291a4?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="LinkedIn">
-            in
-          </a>
-
-          <a href="https://youtube.com/@ldf-uk?si=GykWDm6q4iPDI1h7"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="YouTube">
-            ▶
-          </a>
-
+        <div class="ldf-footer__principles">
+          <span>People first</span>
+          <span>Integrity always</span>
+          <span>Impact together</span>
         </div>
       </section>
 
     </div>
 
-    <!-- Copyright -->
+    <!-- Bottom bar -->
     <div class="ldf-footer__bottom">
       <p>
         © <span id="ldf-footer-year">2026</span>
-        Life Development Foundation. All rights reserved.
+        Life Development Foundation.
+        All rights reserved.
       </p>
 
       <p class="ldf-footer__signature">
-        LDF <span>•</span> HOPE <span>•</span> LEARNING
+        <span>LDF</span>
+        <i>•</i>
+        <span>HOPE</span>
+        <i>•</i>
+        <span>LEARNING</span>
       </p>
+
+      <a class="ldf-footer__back-top" href="#top">
+        Back to top ↑
+      </a>
     </div>
 
   </div>
 </footer>
+
+<script>
+  const footerYear = document.getElementById("ldf-footer-year");
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
+</script>
+```
+
 
 <script src="/LDF-HOPE/Js/main.js"></script>
 
