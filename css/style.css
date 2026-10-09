@@ -924,9 +924,11 @@ main {
   font-family: inherit;
 }
 
-.ldf-footer .ldf-footer__tagline {
+.ldf-footer .ldf-footer__tagline,
+.ldf-footer p.ldf-footer__tagline {
   color: #ffffff !important;
   opacity: 1 !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
   position: relative;
   isolation: isolate;
@@ -1245,7 +1247,12 @@ main {
     padding-top: 48px;
   }
 
-  .ldf-footer__grid {
+body .ldf-footer .ldf-footer__tagline {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #ffffff !important;
+  
+}  .ldf-footer__grid {
     grid-template-columns: 1fr 1fr;
     gap: 36px 22px;
     padding-bottom: 38px;
