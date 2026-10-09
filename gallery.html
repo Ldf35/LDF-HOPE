@@ -1,1 +1,1136 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Our Gallery | Life Development Foundation</title>
+  <meta name="description" content="Discover the journey, programmes, leadership activities and community initiatives of the Life Development Foundation. Building stronger lives and creating thriving communities.">
+  <meta name="theme-color" content="#061a39">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/LDF-HOPE/css/style.css">
+
+  <style>
+    /* =====================================
+       LDF GALLERY — PREMIUM PAGE DESIGN
+       ===================================== */
+
+    :root {
+      --gallery-navy: #061a39;
+      --gallery-blue: #075bc8;
+      --gallery-bright: #2696ff;
+      --gallery-ink: #10213b;
+      --gallery-muted: #62718a;
+      --gallery-bg: #f5f8fd;
+      --gallery-line: #e4eaf3;
+      --gallery-white: #fff;
+    }
+
+    .gallery-page,
+    .gallery-page * {
+      box-sizing: border-box;
+    }
+
+    .gallery-page {
+      overflow: hidden;
+      background: var(--gallery-bg);
+      color: var(--gallery-ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .gallery-page a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gallery-container {
+      width: min(1200px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    /* HERO */
+
+    .gallery-hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        radial-gradient(ellipse at 82% 15%, rgba(33, 128, 255, .24), transparent 38%),
+        linear-gradient(120deg, #04142e 0%, #082755 62%, #064a9b 100%);
+    }
+
+    .gallery-hero::before,
+    .gallery-hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(255, 255, 255, .11);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .gallery-hero::before {
+      width: 520px;
+      height: 520px;
+      right: -120px;
+      top: -210px;
+      box-shadow:
+        0 0 0 48px rgba(255,255,255,.025),
+        0 0 0 100px rgba(255,255,255,.02);
+    }
+
+    .gallery-hero::after {
+      width: 260px;
+      height: 260px;
+      right: 12%;
+      bottom: -200px;
+      border-color: rgba(93, 180, 255, .32);
+    }
+
+    .gallery-hero__content {
+      width: min(780px, 100%);
+      padding: 88px 0 92px;
+    }
+
+    .gallery-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: #a8d5ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .gallery-eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: #5eb8ff;
+    }
+
+    .gallery-hero h1 {
+      max-width: 760px;
+      margin: 0;
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -3.5px;
+    }
+
+    .gallery-hero h1 span {
+      display: block;
+      color: #91caff;
+    }
+
+    .gallery-hero__description {
+      max-width: 620px;
+      margin: 25px 0 0;
+      color: #d0def2;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .gallery-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .gallery-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 21px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .gallery-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .gallery-button--primary {
+      background: #fff;
+      color: #082653;
+    }
+
+    .gallery-button--outline {
+      border-color: rgba(255,255,255,.35);
+      color: white;
+      background: rgba(255,255,255,.045);
+    }
+
+    /* INTRO */
+
+    .gallery-intro {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, .7fr);
+      align-items: end;
+      gap: 40px;
+      padding: 78px 0 30px;
+    }
+
+    .gallery-kicker {
+      margin: 0 0 12px;
+      color: var(--gallery-blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .gallery-intro h2 {
+      max-width: 680px;
+      margin: 0;
+      color: var(--gallery-ink);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(29px, 4vw, 43px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1.7px;
+    }
+
+    .gallery-intro h2 span {
+      color: var(--gallery-blue);
+    }
+
+    .gallery-intro__text {
+      margin: 0;
+      color: var(--gallery-muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* GALLERY CONTROLS */
+
+    .gallery-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 22px 0 28px;
+      border-bottom: 1px solid var(--gallery-line);
+    }
+
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .gallery-filter {
+      min-height: 39px;
+      padding: 0 16px;
+      border: 1px solid #dce5f1;
+      border-radius: 7px;
+      background: #fff;
+      color: #50617b;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .gallery-filter:hover,
+    .gallery-filter.is-active {
+      border-color: var(--gallery-blue);
+      background: var(--gallery-blue);
+      color: #fff;
+    }
+
+    .gallery-count {
+      color: var(--gallery-muted);
+      font-size: 13px;
+    }
+
+    /* PHOTO GRID */
+
+    .gallery-main {
+      padding-bottom: 88px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      padding-top: 30px;
+    }
+
+    .gallery-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(18, 47, 86, .07);
+      border-radius: 13px;
+      background: white;
+      box-shadow: 0 5px 22px rgba(14, 42, 82, .035);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 38px rgba(14, 42, 82, .11);
+    }
+
+    .gallery-card[hidden] {
+      display: none;
+    }
+
+    .gallery-card__image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e7edf6;
+    }
+
+    .gallery-card__image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .gallery-card:hover .gallery-card__image img {
+      transform: scale(1.045);
+    }
+
+    .gallery-card__category {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 5px;
+      background: rgba(5, 26, 57, .83);
+      color: white;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .gallery-card__open {
+      position: absolute;
+      right: 13px;
+      bottom: 13px;
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 50%;
+      background: rgba(255,255,255,.95);
+      color: var(--gallery-navy);
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .gallery-card__open:hover {
+      transform: scale(1.07);
+      background: #dcecff;
+    }
+
+    .gallery-card__body {
+      padding: 21px 21px 23px;
+    }
+
+    .gallery-card__body h3 {
+      margin: 0 0 9px;
+      color: var(--gallery-ink);
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      font-weight: 750;
+      letter-spacing: -.35px;
+      line-height: 1.45;
+    }
+
+    .gallery-card__body p {
+      margin: 0;
+      color: var(--gallery-muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .gallery-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #edf1f7;
+      color: #7c8ba2;
+      font-size: 11px;
+    }
+
+    .gallery-card__footer span:last-child {
+      color: var(--gallery-blue);
+      font-weight: 750;
+    }
+
+    /* Image loading errors */
+
+    .gallery-card__image.image-error::after {
+      content: "Check image filename in GitHub";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      color: #52627b;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* IMPACT STRIP */
+
+    .gallery-message {
+      position: relative;
+      overflow: hidden;
+      margin: 0 0 85px;
+      padding: 43px 46px;
+      border: 1px solid rgba(77, 143, 228, .2);
+      border-radius: 15px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(50,133,255,.12), transparent 48%),
+        #eaf2ff;
+    }
+
+    .gallery-message__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .gallery-message h2 {
+      margin: 0 0 10px;
+      color: var(--gallery-navy);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(23px, 3vw, 33px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .gallery-message p {
+      max-width: 650px;
+      margin: 0;
+      color: #526783;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .gallery-message .gallery-button {
+      flex-shrink: 0;
+      background: var(--gallery-blue);
+      color: #fff;
+    }
+
+    /* LIGHTBOX */
+
+    .gallery-lightbox {
+      position: fixed;
+      z-index: 99999;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(1, 9, 23, .94);
+    }
+
+    .gallery-lightbox.is-open {
+      display: flex;
+    }
+
+    .gallery-lightbox__content {
+      position: relative;
+      width: min(1100px, 100%);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .gallery-lightbox__image {
+      display: block;
+      max-width: 100%;
+      max-height: 76vh;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    .gallery-lightbox__caption {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .gallery-lightbox__close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .gallery-empty {
+      display: none;
+      padding: 35px 0;
+      color: var(--gallery-muted);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .gallery-intro {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding-top: 58px;
+      }
+
+      .gallery-hero {
+        min-height: 410px;
+      }
+
+      .gallery-message__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .gallery-container {
+        width: calc(100% - 32px);
+      }
+
+      .gallery-hero {
+        min-height: 390px;
+      }
+
+      .gallery-hero__content {
+        padding: 65px 0;
+      }
+
+      .gallery-hero h1 {
+        font-size: clamp(39px, 11vw, 55px);
+        letter-spacing: -2px;
+      }
+
+      .gallery-hero__description {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .gallery-intro {
+        padding-top: 46px;
+      }
+
+      .gallery-intro h2 {
+        font-size: 30px;
+        letter-spacing: -1px;
+      }
+
+      .gallery-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .gallery-filters {
+        gap: 7px;
+      }
+
+      .gallery-filter {
+        min-height: 36px;
+        padding: 0 11px;
+        font-size: 12px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 19px;
+        padding-top: 22px;
+      }
+
+      .gallery-card__image {
+        aspect-ratio: 5 / 3;
+      }
+
+      .gallery-main {
+        padding-bottom: 50px;
+      }
+
+      .gallery-message {
+        margin-bottom: 50px;
+        padding: 28px 23px;
+      }
+
+      .gallery-message .gallery-button {
+        width: 100%;
+      }
+
+      .gallery-lightbox {
+        padding: 12px;
+      }
+
+      .gallery-lightbox__close {
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-page *,
+      .gallery-page *::before,
+      .gallery-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+<!-- =====================================
+     SITE HEADER
+     Retains the LDF navigation and HOPE link
+     ===================================== -->
+
+<header class="site-header">
+  <div class="container nav-container">
+
+    <a href="/LDF-HOPE/" class="brand">
+      <img
+        src="/LDF-HOPE/7e64c73a-b2e1-4843-b294-a0825088490c.jpeg"
+        alt="Life Development Foundation"
+        class="brand-logo">
+
+      <div class="brand-text">
+        <strong>Life Development</strong>
+        <span>Foundation</span>
+      </div>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="/LDF-HOPE/">Home</a>
+      <a href="/LDF-HOPE/about.html">About</a>
+      <a href="/LDF-HOPE/programs.html">Our Work</a>
+      <a href="/LDF-HOPE/hope.html">HOPE</a>
+      <a href="/LDF-HOPE/impact.html">Impact</a>
+      <a href="/LDF-HOPE/get-involved.html">Get Involved</a>
+      <a href="/LDF-HOPE/gallery.html" class="active" aria-current="page">Gallery</a>
+      <a href="/LDF-HOPE/contact.html">Contact</a>
+
+      <a
+        href="https://script.google.com/macros/s/AKfycbwUGrgk65R-KD1yQxDXDe2xYm5PWNFSPfADqtAOoXSnCcbFEKJ1Gkk_mJlzIQz6vQ_V/exec"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-app">HOPE App ↗</a>
+    </nav>
+
+    <button class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="ldf-mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="ldf-mobile-nav">
+    <a href="/LDF-HOPE/">Home</a>
+    <a href="/LDF-HOPE/about.html">About</a>
+    <a href="/LDF-HOPE/programs.html">Our Work</a>
+    <a href="/LDF-HOPE/hope.html">HOPE</a>
+    <a href="/LDF-HOPE/impact.html">Impact</a>
+    <a href="/LDF-HOPE/get-involved.html">Get Involved</a>
+    <a href="/LDF-HOPE/gallery.html" class="active" aria-current="page">Gallery</a>
+    <a href="/LDF-HOPE/contact.html">Contact</a>
+
+    <a
+      href="https://script.google.com/macros/s/AKfycbwUGrgk65R-KD1yQxDXDe2xYm5PWNFSPfADqtAOoXSnCcbFEKJ1Gkk_mJlzIQz6vQ_V/exec"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mobile-app">Open HOPE App ↗</a>
+  </div>
+</header>
+
+<main class="gallery-page">
+
+  <!-- HERO -->
+  <section class="gallery-hero">
+    <div class="gallery-container">
+      <div class="gallery-hero__content">
+
+        <div class="gallery-eyebrow">
+          Life Development Foundation
+        </div>
+
+        <h1>
+          Real people.
+          <span>Meaningful progress.</span>
+        </h1>
+
+        <p class="gallery-hero__description">
+          Every programme begins with an idea. Every meaningful
+          step brings people closer to a stronger community.
+          Explore the journey, activities and shared commitment
+          behind LDF.
+        </p>
+
+        <div class="gallery-hero__actions">
+          <a href="#our-gallery" class="gallery-button gallery-button--primary">
+            Explore the gallery <span aria-hidden="true">↓</span>
+          </a>
+
+          <a href="/LDF-HOPE/get-involved.html"
+             class="gallery-button gallery-button--outline">
+            Be part of the journey <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="gallery-container">
+    <div class="gallery-intro">
+      <div>
+        <p class="gallery-kicker">Our journey, documented</p>
+        <h2>More than moments.<br><span>A purpose in every picture.</span></h2>
+      </div>
+
+      <p class="gallery-intro__text">
+        Our gallery brings together moments from our initiatives,
+        learning activities and community work. We believe impact
+        should be communicated with honesty, respect and care for
+        the people and communities involved.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-container gallery-main" id="our-gallery">
+
+    <div class="gallery-toolbar">
+      <div class="gallery-filters" role="group" aria-label="Filter gallery">
+        <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">All moments</button>
+        <button class="gallery-filter" type="button" data-filter="leadership" aria-pressed="false">Leadership</button>
+        <button class="gallery-filter" type="button" data-filter="community" aria-pressed="false">Community</button>
+        <button class="gallery-filter" type="button" data-filter="hope" aria-pressed="false">HOPE Project</button>
+      </div>
+
+      <span class="gallery-count" id="gallery-count" aria-live="polite">
+        6 photographs
+      </span>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- PHOTO 1 -->
+      <article class="gallery-card" data-category="community">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/home.jpg"
+            alt="Life Development Foundation community activity"
+            loading="lazy">
+          <span class="gallery-card__category">Community</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View community activity photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Community in Action</h3>
+          <p>People coming together around a shared purpose and a positive future.</p>
+          <div class="gallery-card__footer">
+            <span>LDF community work</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHOTO 2 -->
+      <article class="gallery-card" data-category="leadership">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/leadership-01.jpg.jpg"
+            alt="Leadership programme moment"
+            loading="lazy">
+          <span class="gallery-card__category">Leadership</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View leadership photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Learning Through Leadership</h3>
+          <p>Developing confidence, responsibility and the ability to contribute.</p>
+          <div class="gallery-card__footer">
+            <span>Leadership programme</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHOTO 3 -->
+      <article class="gallery-card" data-category="leadership">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/leadership-05.jpg.jpg"
+            alt="Participants in an LDF leadership activity"
+            loading="lazy">
+          <span class="gallery-card__category">Leadership</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View leadership activity photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Growing Together</h3>
+          <p>Creating space for shared learning, teamwork and personal development.</p>
+          <div class="gallery-card__footer">
+            <span>Learning and development</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHOTO 4 -->
+      <article class="gallery-card" data-category="community">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/leadership-03.jpg.jpg"
+            alt="LDF programme and community engagement"
+            loading="lazy">
+          <span class="gallery-card__category">Community</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View community engagement photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Stronger Connections</h3>
+          <p>Building relationships that help ideas grow into meaningful action.</p>
+          <div class="gallery-card__footer">
+            <span>Community engagement</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHOTO 5 -->
+      <article class="gallery-card" data-category="hope">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/leadership-06.jpg.jpg"
+            alt="LDF project activity"
+            loading="lazy">
+          <span class="gallery-card__category">LDF HOPE</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View LDF project photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Turning Purpose into Action</h3>
+          <p>Our commitment to practical, respectful and community-focused support.</p>
+          <div class="gallery-card__footer">
+            <span>HOPE Project journey</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PHOTO 6 -->
+      <article class="gallery-card" data-category="hope">
+        <div class="gallery-card__image">
+          <img
+            src="/LDF-HOPE/gallery/leadership-07.jpg.jpg"
+            alt="Life Development Foundation initiative"
+            loading="lazy">
+          <span class="gallery-card__category">LDF HOPE</span>
+          <button class="gallery-card__open" type="button"
+            aria-label="View LDF initiative photograph">↗</button>
+        </div>
+        <div class="gallery-card__body">
+          <h3>Building a Brighter Future</h3>
+          <p>Working towards a future where people can learn, grow and participate with dignity.</p>
+          <div class="gallery-card__footer">
+            <span>Our shared vision</span>
+            <span>VIEW PHOTO ↗</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="gallery-empty" id="gallery-empty">
+      No photographs are available in this category yet.
+    </p>
+  </section>
+
+  <!-- CLOSING MESSAGE -->
+  <section class="gallery-container">
+    <div class="gallery-message">
+      <div class="gallery-message__inner">
+        <div>
+          <h2>The journey continues.</h2>
+          <p>
+            LDF is working towards stronger lives and thriving
+            communities through knowledge, responsible action
+            and opportunities for growth. Discover our work
+            and find a way to be part of the journey.
+          </p>
+        </div>
+
+        <a href="/LDF-HOPE/get-involved.html"
+           class="gallery-button">
+          Explore ways to contribute <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- PHOTO LIGHTBOX -->
+<div class="gallery-lightbox"
+     id="gallery-lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Photograph viewer"
+     aria-hidden="true">
+
+  <button class="gallery-lightbox__close"
+          type="button"
+          aria-label="Close photograph viewer">×</button>
+
+  <div class="gallery-lightbox__content">
+    <img class="gallery-lightbox__image" src="" alt="">
+    <p class="gallery-lightbox__caption"></p>
+  </div>
+</div>
+
+<!-- PREMIUM LDF FOOTER -->
+<footer class="ldf-footer">
+  <div class="ldf-footer__container">
+    <div class="ldf-footer__grid">
+
+      <section class="ldf-footer__brand">
+        <a href="/LDF-HOPE/" class="ldf-footer__brand-link">
+          <span class="ldf-footer__logo-mark" aria-hidden="true">LDF</span>
+          <span class="ldf-footer__brand-name">
+            Life Development
+            <strong>Foundation</strong>
+          </span>
+        </a>
+
+        <p class="ldf-footer__tagline">
+          Building stronger lives.<br>
+          Creating thriving communities.
+        </p>
+
+        <p class="ldf-footer__description">
+          Sharing knowledge, creating opportunities and supporting
+          positive change for a stronger, more inclusive future.
+        </p>
+
+        <div class="ldf-footer__socials">
+          <a href="https://www.facebook.com/share/1EnymvToj6/?mibextid=wwXIfr"
+             target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/lifedevelopment_foundation?stkn=OXliOHFnZjR3cjQw&utm_source=qr"
+             target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/in/kasun-udayanga-35b8291a4"
+             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          <a href="https://youtube.com/@ldf-uk?si=GykWDm6q4iPDI1h7"
+             target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+        </div>
+      </section>
+
+      <nav class="ldf-footer__section" aria-label="Explore LDF">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="/LDF-HOPE/about.html">About LDF <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/vision.html">Our Vision <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/story.html">Our Story <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/programs.html">Programmes <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/gallery.html">Gallery <span>↗</span></a></li>
+        </ul>
+      </nav>
+
+      <nav class="ldf-footer__section" aria-label="LDF projects">
+        <h3>Our Work</h3>
+        <ul>
+          <li><a href="/LDF-HOPE/hope.html">LDF HOPE <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/impact.html">Our Impact <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/focus.html">Focus Areas <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/get-involved.html">Get Involved <span>↗</span></a></li>
+          <li><a href="/LDF-HOPE/contact.html">Contact Us <span>↗</span></a></li>
+        </ul>
+      </nav>
+
+      <section class="ldf-footer__section ldf-footer__connect">
+        <h3>Stay Connected</h3>
+        <p>Follow our journey and discover ways to contribute to positive community change.</p>
+
+        <a class="ldf-footer__contact-link" href="/LDF-HOPE/contact.html">
+          Connect with LDF <span aria-hidden="true">→</span>
+        </a>
+
+        <div class="ldf-footer__principles">
+          <span>People first</span>
+          <span>Integrity always</span>
+          <span>Impact together</span>
+        </div>
+      </section>
+    </div>
+
+    <div class="ldf-footer__bottom">
+      <p>© <span id="ldf-footer-year">2026</span> Life Development Foundation. All rights reserved.</p>
+
+      <p class="ldf-footer__signature">
+        <span>LDF</span><i>•</i><span>HOPE</span><i>•</i><span>LEARNING</span>
+      </p>
+
+      <a class="ldf-footer__back-top" href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/LDF-HOPE/Js/main.js"></script>
+
+<script>
+  /* Current year */
+  const yearElement = document.getElementById("ldf-footer-year");
+  if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+  /* Gallery category filters */
+  const filterButtons = document.querySelectorAll(".gallery-filter");
+  const galleryCards = document.querySelectorAll(".gallery-card");
+  const galleryCount = document.getElementById("gallery-count");
+  const galleryEmpty = document.getElementById("gallery-empty");
+
+  function applyGalleryFilter(category) {
+    let visible = 0;
+
+    galleryCards.forEach(card => {
+      const show = category === "all" || card.dataset.category === category;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    galleryCount.textContent = visible + (visible === 1 ? " photograph" : " photographs");
+    galleryEmpty.style.display = visible ? "none" : "block";
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach(item => {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      button.classList.add("is-active");
+      button.setAttribute("aria-pressed", "true");
+      applyGalleryFilter(button.dataset.filter);
+    });
+  });
+
+  /* Show a helpful visual if an image path is incorrect */
+  document.querySelectorAll(".gallery-card__image img").forEach(img => {
+    img.addEventListener("error", () => {
+      img.closest(".gallery-card__image").classList.add("image-error");
+    });
+  });
+
+  /* Accessible photo lightbox */
+  const lightbox = document.getElementById("gallery-lightbox");
+  const lightboxImage = lightbox.querySelector(".gallery-lightbox__image");
+  const lightboxCaption = lightbox.querySelector(".gallery-lightbox__caption");
+  const closeButton = lightbox.querySelector(".gallery-lightbox__close");
+  let lastFocusedElement = null;
+
+  function openLightbox(card) {
+    const img = card.querySelector("img");
+    const title = card.querySelector("h3");
+
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+
+    lastFocusedElement = document.activeElement;
+    lightboxImage.src = img.currentSrc || img.src;
+    lightboxImage.alt = img.alt;
+    lightboxCaption.textContent = title ? title.textContent : img.alt;
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    document.body.style.overflow = "";
+
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  document.querySelectorAll(".gallery-card__open").forEach(button => {
+    button.addEventListener("click", () => {
+      openLightbox(button.closest(".gallery-card"));
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+      closeLightbox();
+    }
+  });
+</script>
+
+</body>
+</html>
+```
 
