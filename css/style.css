@@ -894,10 +894,10 @@ main {
     padding: 55px 20px;
   }
 }
-```css
 /* ==========================================
    LDF PREMIUM FOOTER
    ========================================== */
+
 
 .ldf-footer {
   --footer-blue: #0878f9;
@@ -1271,4 +1271,3 @@ main {
     transition-duration: .01ms !important;
   }
 }
-```
