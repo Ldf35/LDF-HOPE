@@ -26,39 +26,52 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      MOBILE MENU
   ========================= */
+  
   function openMenu() {
+    if (!menuToggle || !mobileNav) return;
+
     isMenuOpen = true;
     mobileNav.classList.add("active");
     document.body.classList.add("menu-open");
+
     menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation");
   }
+
   function closeMenu() {
+    if (!menuToggle || !mobileNav) return;
+
     isMenuOpen = false;
     mobileNav.classList.remove("active");
     document.body.classList.remove("menu-open");
+
     menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
   }
 
   if (menuToggle && mobileNav) {
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+
     menuToggle.addEventListener("click", function () {
-      isMenuOpen ? closeMenu() : openMenu();
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
-    // Close menu when clicking any link inside
     mobileNav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
+
+    // Close when switching back to desktop layout
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        closeMenu();
+      }
+    });
   }
-
-  /* =========================
-     ESCAPE KEY CLOSE
-  ========================= */
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && isMenuOpen) {
-      closeMenu();
-    }
-  });
-
   /* =========================
      REVEAL ANIMATION — REFIINED
   ========================= */
