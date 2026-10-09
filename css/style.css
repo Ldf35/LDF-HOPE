@@ -1769,3 +1769,21 @@ main {
     animation: none !important;
   }
 }
+
+/* =========================
+   ACCESSIBILITY: REDUCED MOTION
+   Combined duplicate rules
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
