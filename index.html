@@ -714,65 +714,88 @@ Get Involved →
 
 <script>
 (() => {
-  const endpoint =
-    "https://ldf-ai-gateway.lifedevelopmentfoundation-docs.workers.dev/";
+  const panel = document.getElementById("ldf-hub-ai-panel");
+  const open = document.getElementById("ldf-hub-ai-open");
+  const close = document.getElementById("ldf-hub-ai-close");
+  const agent = document.getElementById("ldf-hub-ai-agent");
+  const input = document.getElementById("ldf-hub-ai-input");
+  const messages = document.getElementById("ldf-hub-ai-messages");
+  const form = document.getElementById("ldf-hub-ai-form");
+  const send = document.getElementById("ldf-hub-ai-send");
+  const status = document.getElementById("ldf-hub-ai-status");
 
-  const form = document.getElementById("ldf-form");
-  const agentSelect = document.getElementById("ldf-agent");
-  const question = document.getElementById("ldf-question");
-  const chat = document.getElementById("ldf-chat");
-  const send = document.getElementById("ldf-send");
-  const status = document.getElementById("ldf-status");
-
-  function addMessage(text, type) {
-    const p = document.createElement("p");
-    p.className = "ldf-message " + type;
-    p.textContent = text;
-    chat.appendChild(p);
-    chat.scrollTop = chat.scrollHeight;
+  if (!panel || !open || !close || !agent || !input ||
+      !messages || !form || !send || !status) {
+    console.error("LDF AI: One or more widget elements are missing.");
+    return;
   }
 
-  form.addEventListener("submit", async (event) => {
+  open.addEventListener("click", () => {
+    panel.hidden = false;
+    input.focus();
+  });
+
+  close.addEventListener("click", () => {
+    panel.hidden = true;
+  });
+
+  function addMessage(text, isUser) {
+    const p = document.createElement("p");
+    p.className = "ldf-hub-ai-bubble" +
+      (isUser ? " ldf-hub-ai-user" : "");
+    p.textContent = text;
+    messages.appendChild(p);
+    messages.scrollTop = messages.scrollHeight;
+    return p;
+  }
+
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const message = question.value.trim();
+    const message = input.value.trim();
     if (!message || send.disabled) return;
 
-    const agent = agentSelect.value;
-    addMessage(message, "ldf-user");
-    question.value = "";
-    send.disabled = true;
-    status.textContent = "LDF AI is thinking...";
-
-    try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ agent, message })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success || !data.answer) {
-        throw new Error(data.error || "The AI request failed.");
-      }
-
-      addMessage(data.answer, "ldf-bot");
-      status.textContent = "Response received.";
-    } catch (error) {
-      addMessage(
-        "Sorry, the assistant is temporarily unavailable. Please try again later.",
-        "ldf-bot"
-      );
-      status.textContent = "Connection failed. Please try again.";
-      console.error("LDF AI request failed:", error);
-    } finally {
-      send.disabled = false;
-      question.focus();
+    if (
+      typeof google === "undefined" ||
+      !google.script ||
+      !google.script.run
+    ) {
+      status.textContent =
+        "This page is not running inside Apps Script. Open the deployed web app URL.";
+      return;
     }
+
+    addMessage(message, true);
+    input.value = "";
+    send.disabled = true;
+    status.textContent = "Connecting to LDF AI...";
+    const reply = addMessage("Please wait...", false);
+
+    google.script.run
+      .withSuccessHandler((data) => {
+        if (data && data.success === true && data.answer) {
+          reply.textContent = data.answer;
+          status.textContent = "Connected successfully.";
+        } else {
+          reply.textContent = "The assistant returned no answer.";
+          status.textContent = "Check the ldfAskAgent function in Code.gs.";
+        }
+        send.disabled = false;
+        input.focus();
+      })
+      .withFailureHandler((error) => {
+        reply.textContent = "The request failed.";
+        status.textContent =
+          "Apps Script error: " +
+          (error && error.message ? error.message : String(error));
+        console.error("LDF AI Apps Script error:", error);
+        send.disabled = false;
+      })
+      .ldfAskAgent(agent.value, message);
   });
 })();
 </script>
+
 <!-- END LDF AI ASSISTANTS -->
 </body>
 </html>
