@@ -112,6 +112,32 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      CURRENT YEAR
   ========================= */
+      document.getElementById("ldf-footer-year").textContent =
+      new Date().getFullYear();
+
+  
+const LDF_AI_URL = "https://ldf-ai-gateway.lifedevelopmentfoundation-docs.workers.dev/";
+
+async function askLDFAgent(agent, message) {
+  const response = await fetch(LDF_AI_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ agent, message })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "AI request failed.");
+  }
+
+  return data.answer;
+}
+
+// Examples:
+// askLDFAgent("learning", "Help me improve my focus.")
+// askLDFAgent("hope", "How does the HOPE project work?")
+// askLDFAgent("admin", "Draft a weekly operations checklist.")
   document.querySelectorAll("[data-year]").forEach(function (element) {
     element.textContent = new Date().getFullYear();
   });
