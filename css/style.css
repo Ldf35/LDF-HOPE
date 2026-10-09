@@ -903,6 +903,12 @@ main {
   --footer-blue: #0878f9;
   --footer-text: #e8efff;
   --footer-muted: #a8bad8;
+}
+
+.ldf-footer .ldf-footer__tagline {
+  color: var(--footer-text) !important;
+  opacity: 1 !important;
+}
 
   position: relative;
   isolation: isolate;
@@ -995,7 +1001,8 @@ main {
 
 .ldf-footer__tagline {
   margin: 28px 0 14px;
-  color: #fff;
+  color: #ffffff !important;
+  opacity: 1 !important;
   font-size: 21px;
   line-height: 1.55;
   font-weight: 600;
