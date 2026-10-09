@@ -1787,3 +1787,231 @@ main {
     animation: none !important;
   }
 }
+
+/* ========================================
+   LDF SERVICE HUB
+   Styles for Main.html service selection
+======================================== */
+
+.intro {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 65px 24px 35px;
+  text-align: center;
+}
+
+.intro p {
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  width: min(92%, var(--container));
+  margin: 0 auto;
+  padding: 20px 0 75px;
+}
+
+.grid .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 280px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 12px 35px rgba(0, 43, 127, .06);
+  transition: var(--transition);
+}
+
+.grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: #c8d8ef;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 20px;
+  padding: 7px 12px;
+  border-radius: 50px;
+  background: #eaf2ff;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.badge.soon {
+  background: #f2f4f8;
+  color: #687991;
+}
+
+.grid .card h2 {
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-family: Manrope, Inter, sans-serif;
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.25;
+}
+
+.grid .card p {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.grid .card .btn {
+  min-height: 46px;
+  margin-top: auto;
+  padding: 12px 18px;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.grid .card .btn:hover {
+  background: var(--blue-2);
+  transform: translateY(-2px);
+}
+
+.grid .card .service-cta {
+  margin-top: 12px;
+}
+
+.grid .card .btn.off {
+  border-color: var(--line);
+  background: #f2f5fa;
+  color: var(--muted);
+  cursor: default;
+}
+
+.grid .card .btn.ghost {
+  border-color: var(--line);
+  background: white;
+  color: var(--blue);
+}
+
+.flow {
+  padding: 75px 24px;
+  background: var(--soft);
+}
+
+.flow h2 {
+  margin-bottom: 30px;
+  color: var(--ink);
+  font-family: Manrope, Inter, sans-serif;
+  font-size: clamp(30px, 4vw, 44px);
+  text-align: center;
+}
+
+.flow ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  counter-reset: journey;
+}
+
+.flow li {
+  position: relative;
+  min-width: 0;
+  padding: 24px 24px 24px 65px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  color: var(--text);
+  counter-increment: journey;
+}
+
+.flow li::before {
+  content: counter(journey, decimal-leading-zero);
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.join-action {
+  padding: 35px 20px;
+  text-align: center;
+}
+
+.join-action .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  font-weight: 800;
+}
+
+.foot {
+  padding: 0 20px 50px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.ldf-footer__brand-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ldf-footer__brand-link h2 {
+  margin: 0 0 12px;
+  color: inherit;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .flow ol {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro {
+    padding: 45px 20px 25px;
+  }
+
+  .grid {
+    padding-bottom: 50px;
+  }
+
+  .grid .card {
+    padding: 26px;
+  }
+
+  .flow {
+    padding: 55px 20px;
+  }
+}
